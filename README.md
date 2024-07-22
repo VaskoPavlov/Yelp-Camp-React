@@ -4,9 +4,9 @@ Yelp Camp is a site for campgrounds for rent and recommendations all around the 
  - [x] Initialize git repo
  - [x] Add SoftUni practice server
  - [x] Add base vite project as client
- - [ ] Clean up client
- - [ ] Add project resources
- - [ ] Convert HTML to JSX
+ - [x] Clean up client
+ - [x] Add project resources
+ - [x] Convert HTML to JSX
  - [ ] Separate HTML into components
 ## 2. Router
  - [ ] Install react-router-dom
