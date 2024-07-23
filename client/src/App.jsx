@@ -1,7 +1,10 @@
+import Header from "./components/header/Header"
+
 function App() {
+
   return (
     <>
-      <h1>Hello Yelp Camp</h1>
+      <Header />
     </>
   )
 }
