@@ -19,15 +19,13 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
+import YelpCamp from '../../public/images/YelpCampLogo.png'
+
 const seasons = [
 	{ name: 'Spring', description: 'Moderate temperatures and the beauty of nature', href: '/catalog/spring', icon: MapPinIcon },
 	{ name: 'Summer', description: 'Seaside campgrounds with natural shade', href: '/catalog/summer', icon: MapPinIcon },
 	{ name: 'Fall', description: 'Mountains with trees of various leaf colors', href: '/catalog/fall', icon: MapPinIcon },
 ]
-// const callsToAction = [
-// 	{ name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-// 	{ name: 'Contact sales', href: '#', icon: PhoneIcon },
-// ]
 
 export default function Example() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -38,7 +36,7 @@ export default function Example() {
 				<div className="flex lg:flex-1">
 					<a href="/" className="-m-1.5 p-1.5">
 						<span className="sr-only">Yelp Camp</span>
-						<img alt="" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" className="h-8 w-auto" />
+						<img alt="Yelp Camp" src={YelpCamp} className="h-16 w-auto" />
 					</a>
 				</div>
 				<div className="flex lg:hidden">
@@ -105,14 +103,14 @@ export default function Example() {
 				</PopoverGroup>
 				<div className="hidden lg:flex lg:flex-1 lg:justify-end">
 					{/* User */}
-					<a href="/logout" className="text-sm font-semibold leading-6 text-gray-900">
+					<a href="/logout" className="m-3 text-sm font-semibold leading-6 text-gray-900">
 						Logout
 					</a>
 					{/* Guest */}
-					<a href="/login" className="text-sm font-semibold leading-6 text-gray-900">
+					<a href="/login" className="m-3 text-sm font-semibold leading-6 text-gray-900">
 						Log in
 					</a>
-					<a href="/register" className="text-sm font-semibold leading-6 text-gray-900">
+					<a href="/register" className="m-3 text-sm font-semibold leading-6 text-gray-900">
 						Register
 					</a>
 				</div>
