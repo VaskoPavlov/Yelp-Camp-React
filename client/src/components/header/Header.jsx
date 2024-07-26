@@ -34,9 +34,9 @@ export default function Example() {
 		<header className="bg-white">
 			<nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
 				<div className="flex lg:flex-1">
-					<a href="/" className="-m-1.5 p-1.5">
+					<a to="/" className="-m-1.5 p-1.5">
 						<span className="sr-only">Yelp Camp</span>
-						<img alt="Yelp Camp" src={YelpCamp} className="h-16 w-auto" />
+						<img alt="Yelp Camp" src={YelpCamp} className="h-8 w-auto lg:h-16 w-auto md:h-12 w-auto" />
 					</a>
 				</div>
 				<div className="flex lg:hidden">
@@ -70,7 +70,7 @@ export default function Example() {
 											<item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" />
 										</div>
 										<div className="flex-auto">
-											<a href={item.href} className="block font-semibold text-gray-900">
+											<a to={item.href} className="block font-semibold text-gray-900">
 												{item.name}
 												<span className="absolute inset-0" />
 											</a>
@@ -94,23 +94,23 @@ export default function Example() {
 						</PopoverPanel>
 					</Popover>
 
-					<a href="/catalog" className="text-sm font-semibold leading-6 text-gray-900">
+					<a to="/catalog" className="text-sm font-semibold leading-6 text-gray-900">
 						Catalog
 					</a>
-					<a href="/create" className="text-sm font-semibold leading-6 text-gray-900">
+					<a to="/create" className="text-sm font-semibold leading-6 text-gray-900">
 						Create
 					</a>
 				</PopoverGroup>
 				<div className="hidden lg:flex lg:flex-1 lg:justify-end">
 					{/* User */}
-					<a href="/logout" className="m-3 text-sm font-semibold leading-6 text-gray-900">
+					<a to="/logout" className="m-3 text-sm font-semibold leading-6 text-gray-900">
 						Logout
 					</a>
 					{/* Guest */}
-					<a href="/login" className="m-3 text-sm font-semibold leading-6 text-gray-900">
+					<a to="/login" className="m-3 text-sm font-semibold leading-6 text-gray-900">
 						Log in
 					</a>
-					<a href="/register" className="m-3 text-sm font-semibold leading-6 text-gray-900">
+					<a to="/register" className="m-3 text-sm font-semibold leading-6 text-gray-900">
 						Register
 					</a>
 				</div>
@@ -119,7 +119,7 @@ export default function Example() {
 				<div className="fixed inset-0 z-10" />
 				<DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
 					<div className="flex items-center justify-between">
-						<a href="#" className="-m-1.5 p-1.5">
+						<a to="#" className="-m-1.5 p-1.5">
 							<span className="sr-only">Your Company</span>
 							<img
 								alt=""
@@ -149,7 +149,7 @@ export default function Example() {
 											<DisclosureButton
 												key={item.name}
 												as="a"
-												href={item.href}
+												to={item.href}
 												className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
 											>
 												{item.name}
@@ -158,13 +158,13 @@ export default function Example() {
 									</DisclosurePanel>
 								</Disclosure>
 								<a
-									href="/create"
+									to="/create"
 									className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
 								>
 									Create
 								</a>
 								<a
-									href="/catalog"
+									to="/catalog"
 									className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
 								>
 									Catalog
@@ -173,14 +173,14 @@ export default function Example() {
 							<div className="py-6">
 								{/* for user */}
 								<a
-									href="/logout"
+									to="/logout"
 									className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
 								>
 									Logout
 								</a>
 								{/* for guest */}
 								<a
-									href="/login"
+									to="/login"
 									className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
 								>
 									Log in
@@ -188,7 +188,7 @@ export default function Example() {
 							</div>
 							<div className="py-6">
 								<a
-									href="/register"
+									to="/register"
 									className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
 								>
 									Register
