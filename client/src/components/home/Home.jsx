@@ -19,32 +19,97 @@ export default function Home() {
           />
         </div>
         <div className="mx-auto max-w-2xl py-8 sm:py-6 lg:py-10">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              Announcing our next round of funding.{' '}
-              <Link to="#" className="font-semibold text-indigo-600">
-                <span aria-hidden="true" className="absolute inset-0" />
-                Read more <span aria-hidden="true">&rarr;</span>
-              </Link>
-            </div>
-          </div>
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Data to enrich your online business
+              Yelp Camp - campgrounds rental site.
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-              fugiat veniam occaecat fugiat aliqua.
+              Soon to include every public campground in the world. <br /> Share with us your experince and be part of <em>OUR</em> the nature loving community!
             </p>
+            {/* Campgrounds - 3 most recents*/}
+              <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900">Most recent campgrounds</h2>
+                <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                  {/* {products.map((product) => ( */}
+                    <div key="campground" className="group relative">
+                      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                        <img
+                          alt=""
+                          src="https://farm4.staticflickr.com/3795/10131087094_c1c0a1c859.jpg"
+                          className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                        />
+                      </div>
+                      <div><h2>Camp 1</h2></div>
+                      <div className="mt-4 flex justify-between">
+                        <div>
+                          <h3 className="text-sm text-gray-700">
+                            <a href="">
+                              <span aria-hidden="true" className="absolute inset-0" />
+                              Details
+                            </a>
+                          </h3>
+                          <p className="mt-1 text-sm text-gray-500">Price</p>
+                        </div>
+                        <p className="text-sm font-medium text-gray-900">$20</p>
+                      </div>
+                    </div>
+                    <div key="campground" className="group relative">
+                      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                        <img
+                          alt=""
+                          src="https://farm4.staticflickr.com/3795/10131087094_c1c0a1c859.jpg"
+                          className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                        />
+                      </div>
+                      <div><h2>Camp 1</h2></div>
+                      <div className="mt-4 flex justify-between">
+                        <div>
+                          <h3 className="text-sm text-gray-700">
+                            <a href="">
+                              <span aria-hidden="true" className="absolute inset-0" />
+                              Details
+                            </a>
+                          </h3>
+                          <p className="mt-1 text-sm text-gray-500">Price</p>
+                        </div>
+                        <p className="text-sm font-medium text-gray-900">$20</p>
+                      </div>
+                    </div>
+                    <div key="campground" className="group relative">
+                      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                        <img
+                          alt=""
+                          src="https://farm4.staticflickr.com/3795/10131087094_c1c0a1c859.jpg"
+                          className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                        />
+                      </div>
+                      <div><h2>Camp 1</h2></div>
+                      <div className="mt-4 flex justify-between">
+                        <div>
+                          <h3 className="text-sm text-gray-700">
+                            <a href="">
+                              <span aria-hidden="true" className="absolute inset-0" />
+                              Details
+                            </a>
+                          </h3>
+                          <p className="mt-1 text-sm text-gray-500">Price</p>
+                        </div>
+                        <p className="text-sm font-medium text-gray-900">$20</p>
+                      </div>
+                    </div>
+                  {/* ))} */}
+                </div>
+              </div>
+            {/*  */}
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
-                to="#"
+                to="/catalog"
                 className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Get started
+                Campgrounds
               </Link>
-              <a to="#" className="text-sm font-semibold leading-6 text-gray-900">
-                Learn more <span aria-hidden="true">→</span>
+              <a to="/about" className="text-sm font-semibold leading-6 text-gray-900">
+                About us <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>
