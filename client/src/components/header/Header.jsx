@@ -28,7 +28,7 @@ const seasons = [
 	{ name: 'Fall', description: 'Mountains with trees of various leaf colors', href: '/catalog/fall', icon: MapPinIcon },
 ]
 
-export default function Example() {
+export default function Header() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
 	return (
@@ -119,7 +119,6 @@ export default function Example() {
 			<Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
 				<div className="fixed inset-0 z-10" />
 				<DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-					<nav>
 						<div className="flex items-center justify-between">
 							<Link to="/" className="-m-1.5 p-1.5">
 								<span className="sr-only">Yelp Camp</span>
@@ -187,8 +186,6 @@ export default function Example() {
 									>
 										Login
 									</Link>
-								</div>
-								<div className="py-6">
 									<Link
 										className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
 										to="/register"
@@ -198,7 +195,6 @@ export default function Example() {
 								</div>
 							</div>
 						</div>
-					</nav>
 				</DialogPanel>
 			</Dialog>
 		</header>
