@@ -21,7 +21,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom'
 
 import YelpCamp from '../../public/images/YelpCampLogo.png'
-import HeaderButton from './header-button'
+// import HeaderButton from './header-button'
 import styles from './header-button.module.css';
 
 const seasons = [
@@ -54,8 +54,8 @@ export default function Header() {
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
-            <PopoverButton className="flex items-center px-3 py-1 border-y-2 rounded-md border-black gap-x-1 text-lg font-semibold leading-6">
-              Seasons
+            <PopoverButton className="flex items-center px-3 py-1 gap-x-1 text-lg font-semibold leading-6">
+            	<span className={styles.textAndBorderImage}>Seasons</span>
               <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none text-gray-400" />
             </PopoverButton>
             <PopoverPanel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
@@ -80,11 +80,12 @@ export default function Header() {
               </div>
             </PopoverPanel>
           </Popover>
-          <Link to="/catalog" className="px-3 py-1 border-y-2 rounded-md border-black text-lg font-semibold leading-6 text-gray-900">
-            Catalog
+          <Link to="/catalog" className="px-3 py-1 text-lg font-semibold leading-6 text-gray-900">
+		  <span className={styles.textAndBorderImage}>Catalog</span>
           </Link>
-          <Link to="/create" className="px-3 py-1 border-y-2 rounded-md border-black text-lg font-semibold leading-6 text-gray-900">
-            Create
+		  {/* */}
+          <Link to="/create" className="px-3 py-1 text-lg font-semibold leading-6 text-gray-900">
+		  <span className={styles.textAndBorderImage}>Create</span>
           </Link>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
