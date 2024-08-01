@@ -52,9 +52,9 @@ export default function Header() {
 						<Bars3Icon aria-hidden="true" className="h-6 w-6" />
 					</button>
 				</div>
-				<PopoverGroup className="hidden lg:flex lg:gap-x-12">
+				<PopoverGroup className="hidden lg:flex lg:gap-x-1">
 					<Popover className="relative">
-						<PopoverButton className="flex items-center px-3 py-1 gap-x-1 text-lg font-semibold leading-6">
+						<PopoverButton className="flex items-center px-3 py-1 gap-x-1 text-lg font-bold leading-6">
 							<span className={styles.textAndBorderImage}>Seasons</span>
 							<ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none" />
 						</PopoverButton>
@@ -69,7 +69,7 @@ export default function Header() {
 											<item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" />
 										</div>
 										<div className="flex-auto">
-											<Link to={item.to} className="block font-semibold text-gray-900">
+											<Link to={item.to} className="block font-bold text-gray-900">
 												{item.name}
 												<span className="absolute inset-0" />
 											</Link>
@@ -80,22 +80,22 @@ export default function Header() {
 							</div>
 						</PopoverPanel>
 					</Popover>
-					<Link to="/catalog" className="px-3 py-1 text-lg font-semibold leading-6 text-gray-900">
+					<Link to="/catalog" className="px-3 py-1 text-lg font-bold leading-6">
 						<span className={styles.textImage}>Catalog</span>
 					</Link>
 					{/* */}
-					<Link to="/create" className="px-3 py-1 text-lg font-semibold leading-6 text-gray-900">
+					<Link to="/create" className="px-3 py-1 text-lg font-bold leading-6">
 						<span className={styles.textImage}>Create</span>
 					</Link>
 				</PopoverGroup>
 				<div className="hidden lg:flex lg:flex-1 lg:justify-end">
-					<Link to="/logout" className="m-3 text-lg font-semibold leading-6 text-gray-900">
+					<Link to="/logout" className="m-3 text-lg font-bold leading-6 text-gray-900">
 						Logout
 					</Link>
-					<Link to="/login" className="m-3 text-lg font-semibold leading-6 text-gray-900">
-						Log in
+					<Link to="/login" className="m-3 text-lg font-bold leading-6 text-gray-900">
+						Login
 					</Link>
-					<Link to="/register" className="m-3 text-lg font-semibold leading-6 text-gray-900">
+					<Link to="/register" className="m-3 text-lg font-bold leading-6 text-gray-900">
 						Register
 					</Link>
 				</div>
@@ -122,7 +122,7 @@ export default function Header() {
 						<div className="-my-6 divide-y divide-gray-500/10">
 							<div className="space-y-2 py-6 menu">
 								<Disclosure as="div" className="-mx-3">
-									<DisclosureButton className="text-lg group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+									<DisclosureButton className="text-lg group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-bold leading-7 hover:bg-gray-50">
 										<span className={styles.textAndBorderImage}>Seasons</span>
 										<ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none group-data-[open]:rotate-180" />
 									</DisclosureButton>
@@ -131,7 +131,7 @@ export default function Header() {
 											<Link
 												key={item.name}
 												to={item.to}
-												className="block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+												className="block rounded-lg py-2 pl-6 pr-3 text-lg font-bold leading-7 text-gray-900 hover:bg-gray-50"
 											>
 												{item.name}
 											</Link>
@@ -140,13 +140,13 @@ export default function Header() {
 								</Disclosure>
 								<Link
 									to="/catalog"
-									className="-mx-3 text-lg block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+									className="-mx-3 text-lg block rounded-lg px-3 py-2 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
 								>
 									<span className={styles.textImage}>Catalog</span>
 								</Link>
 								<Link
 									to="/create"
-									className="-mx-3 text-lg block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+									className="-mx-3 text-lg block rounded-lg px-3 py-2 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
 								>
 									<span className={styles.textImage}>Create</span>
 								</Link>
@@ -154,19 +154,19 @@ export default function Header() {
 							<div className="py-6">
 								<Link
 									to="/logout"
-									className="-mx-3 text-lg block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+									className="-mx-3 text-lg block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
 								>
 									Logout
 								</Link>
 								<Link
 									to="/login"
-									className="-mx-3 text-lg block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+									className="-mx-3 text-lg block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
 								>
-									Log in
+									Login
 								</Link>
 								<Link
 									to="/register"
-									className="-mx-3 text-lg block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+									className="-mx-3 text-lg block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
 								>
 									Register
 								</Link>

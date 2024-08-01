@@ -17,7 +17,7 @@ export default function Home() {
 					className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ae754e] to-[#bcf7d1] opacity-70 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
 				/>
 			</div>
-			<div className="mx-auto max-w-8xl py-10 sm:py-10 lg:py-20">
+			<div className="mx-auto max-w-6xl py-10 sm:py-10 lg:py-20">
 				<div className="text-center">
 					<h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
 						Campgrounds rental site
@@ -29,7 +29,7 @@ export default function Home() {
 					<div className="rounded-3xl p-px bg-gradient-to-b from-[#dde0ce] to-transparent opacity-90 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]
 									mx-auto max-w-2xl px-4 mt-10 py-10 sm:px-6 sm:py-10 lg:max-w-6xl lg:px-20">
 						<h3 className="text-2xl font-bold tracking-tight sm:text-3xl">Most recent campgrounds</h3>
-						<div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+						<div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 md:grid-col-2 lg:grid-cols-3 xl:gap-x-8">
 							{/* {products.map((product) => ( */}
 							<div key="campground 1" className="group relative">
 								<div className="aspect-h-auto aspect-w-auto w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
