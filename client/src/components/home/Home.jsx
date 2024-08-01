@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function Home() {
 	return (
-		<div>
+		<div className="m-20">
 			<div
 				aria-hidden="true"
 				className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -20,10 +20,10 @@ export default function Home() {
 			<div className="mx-auto max-w-8xl py-10 sm:py-10 lg:py-20">
 				<div className="text-center">
 					<h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-						Campgrounds rental site.
+						Campgrounds rental site
 					</h1>
 					<p className="mt-8 text-2xl leading-8 text-gray-600">
-						Soon to include every public campground in the world. <br /> Share your experince and be part of our nature loving community!
+						Soon to include every public campground in the world <br /> Share your experince and be part of our nature loving community
 					</p>
 					{/* Campgrounds - 3 most recents*/}
 					<div className="rounded-3xl p-px bg-gradient-to-b from-[#dde0ce] to-transparent opacity-90 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]
