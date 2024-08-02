@@ -23,7 +23,7 @@ export default function Home() {
 						Campgrounds rental site
 					</h1>
 					<p className="mt-8 text-2xl leading-8 text-gray-600">
-						Soon to include every public campground in the world <br /> Share your experince and be part of our nature loving community
+						Soon to include every public campground in the world
 					</p>
 					{/* Campgrounds - 3 most recents*/}
 					<div className="rounded-3xl p-px bg-gradient-to-b from-[#dde0ce] to-transparent opacity-90 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]
@@ -101,12 +101,12 @@ export default function Home() {
 						</div>
 							<div className="flex items-center pt-8 justify-center gap-x-6">
 								<Link
-									className=" rounded-md bg-cover opacity-100 bg-three-bark px-2.5 py-2 font-semibold shadow-sm hover:opacity-75 hover:scale-110"
+									className=" rounded-md bg-cover opacity-100 bg-three-bark px-2.5 py-2 font-semibold shadow-sm hover:opacity-90 hover:scale-105"
 									to="/catalog"
 								>
 									<span className="text-white [text-shadow:_5px_0_10px_rgb(0_0_0_/_100%)] text-lg">Catalog</span>
 								</Link>
-								<Link to="/about" className=" bg-cover opacity-100 bg-three-bark rounded-md px-2.5 py-2 font-semibold hover:opacity-75 hover:scale-110 leading-6">
+								<Link to="/about" className=" bg-cover opacity-100 bg-three-bark rounded-md px-2.5 py-2 font-semibold hover:opacity-90 hover:scale-105 leading-6">
 									<span className="text-white [text-shadow:_5px_0_10px_rgb(0_0_0_/_100%)] text-lg">About</span>
 								</Link>
 							</div>
