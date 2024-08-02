@@ -87,6 +87,9 @@ export default function Header() {
 					<Link to="/create" className="px-3 py-1 text-lg font-bold leading-6">
 						<span className={styles.textImage}>Create</span>
 					</Link>
+					<Link to="/about" className="px-3 py-1 text-lg font-bold leading-6">
+						<span className={styles.textImage}>About</span>
+					</Link>
 				</PopoverGroup>
 				<div className="hidden lg:flex lg:flex-1 lg:justify-end">
 					<Link to="/logout" className="m-3 text-lg font-bold leading-6 text-gray-900">
