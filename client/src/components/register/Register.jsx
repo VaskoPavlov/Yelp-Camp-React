@@ -15,7 +15,7 @@ export default function Register() {
                     className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ae754e] to-[#bcf7d1] opacity-70 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
                 />
             </div>
-            <div className="flex items-center justify-center h-screen w-full px-5 sm:px-0">
+            <div className="my-auto mx-auto flex items-center justify-center h-screen w-full px-5 sm:px-0">
                 <div className="bg-white rounded-lg shadow-lg border overflow-hidden max-w-sm lg:max-w-md  w-full">
                     {/* <div
                         className="hidden md:block lg:w-1/2 bg-cover bg-blue-700"
@@ -58,7 +58,7 @@ export default function Register() {
                             />
                         </div>
                         <div className="mt-8">
-                            <button className="bg-threeBark [text-shadow:_5px_0_10px_rgb(0_0_0_/_100%)] bg-cover text-white text-lg font-bold py-2 px-4 w-full rounded hover:opacity-90 hover:scale-105">
+                            <button type="submit" className="bg-threeBark [text-shadow:_5px_0_10px_rgb(0_0_0_/_100%)] bg-cover text-white text-lg font-bold py-2 px-4 w-full rounded hover:opacity-90 hover:scale-105">
                                 Register
                             </button>
                         </div>
