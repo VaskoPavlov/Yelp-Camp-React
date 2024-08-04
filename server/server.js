@@ -1358,7 +1358,7 @@
             },
             "841763d6-3622-42a0-b204-06f66243d190": {
                 "name": "Gryta Camping",
-                "imageUrl": "https://lh3.googleusercontent.com/gps-proxy/ALd4DhGeDzN6r1QRLKm3SWvZBZB8V3TKwjiqcPDzOIjo8tqTGgC6apRQ0hTUjyuCv_YFgiD8e0QroWAg41x3L5DzRATZe5lKGNf35w004PuV_u0XUDY6s1KT4qdz1bD7xyjUz3rYW_TwFBvp20TU3erJ-F3DHp3-NR5oDfuXGG5lcm5apMaF6LpTYn1Q=w228-h228-n-k-no",
+                "imageUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.gettyimages.com%2Fphotos%2Fcamping-norway&psig=AOvVaw27OH1B3T6zRYWy5evT4I4F&ust=1722875941710000&source=images&opi=89978449",
                 "description": "Gryta camping is a starting point for the hike to Storesteinen in Gytridalen, with a breathtaking view to Gytrifossen waterfall. The Briksdal Glacier, Olden, Loen Skylift, Loen Play and Stryn is just a short drive from the camping ground.",
                 "price": "30",
                 "location": "Oldedalsvegen 1272, 6788 Olden, Norway",
