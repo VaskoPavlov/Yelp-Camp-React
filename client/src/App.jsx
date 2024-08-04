@@ -9,6 +9,7 @@ import Catalog from './components/catalog/Catalog'
 import Create from './components/create/Create'
 import About from './components/about/About'
 import Details from './components/details/Details'
+import Footer from './components/footer/Footer'
 
 function App() {
 	return (
@@ -24,6 +25,7 @@ function App() {
 				<Route path="/camps/:campId" element={<Details />}/>
 				<Route path="*" element={<NotFound />}/>
 			</Routes>
+			<Footer />
 		</>
 	)
 }
