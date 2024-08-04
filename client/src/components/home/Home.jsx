@@ -54,9 +54,6 @@ export default function Home() {
 								>
 									<span className="text-white [text-shadow:_5px_0_10px_rgb(0_0_0_/_100%)] text-lg">Catalog</span>
 								</Link>
-								<Link to="/about" className=" bg-cover opacity-100 bg-three-bark rounded-md px-2.5 py-2 font-semibold hover:opacity-90 hover:scale-105 leading-6">
-									<span className="text-white [text-shadow:_5px_0_10px_rgb(0_0_0_/_100%)] text-lg">About</span>
-								</Link>
 							</div>
 						</div>
 					</div>
