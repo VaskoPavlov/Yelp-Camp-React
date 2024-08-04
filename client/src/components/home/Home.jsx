@@ -1,8 +1,19 @@
 'use client'
 
 import { Link } from 'react-router-dom'
+import campsAPI from '../../api/camps-api';
+import { useEffect, useState } from 'react';
+import CampListItem from '../catalog/CampListItem';
 
 export default function Home() {
+	const [latestCamps, setLatestCamps] = useState([]);
+	useEffect(() => {
+		(async () => {
+			const result = await campsAPI.getAll();
+			// const latestData = result.length % 3 === 0 ? result.reverse().slice(3) : result.reverse().slice(2)
+			setLatestCamps(result.reverse().slice(0,3));
+		})();
+	})
 	return (
 		<div className="m-20">
 			<div
@@ -28,81 +39,18 @@ export default function Home() {
 					{/* Campgrounds - 3 most recents*/}
 					<div className="rounded-3xl p-px bg-gradient-to-b from-[#dde0ce] to-transparent opacity-90 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]
 									mx-auto max-w-2xl px-4 mt-10 py-10 sm:px-6 sm:py-10 lg:max-w-6xl lg:px-20">
-						<h3 className="text-2xl font-bold tracking-tight sm:text-3xl">Most recent campgrounds</h3>
-						<div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 md:grid-col-2 lg:grid-cols-3 xl:gap-x-8">
-							{/* {products.map((product) => ( */}
-							<div key="campground 1" className="group relative">
-								<div className="aspect-h-auto aspect-w-auto w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-									<img
-										alt=""
-										src="https://farm4.staticflickr.com/3795/10131087094_c1c0a1c859.jpg"
-										className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-									/>
-								</div>
-								<div><h2>Camp 1</h2></div>
-								<div className="mt-4 flex justify-between">
-									<div>
-										<h3 className=" text-gray-700">
-											<a href="">
-												<span aria-hidden="true" className="absolute inset-0" />
-												Details
-											</a>
-										</h3>
-										<p className="mt-1  text-gray-500">Price</p>
-									</div>
-									<p className=" font-medium text-gray-900">$10</p>
-								</div>
-							</div>
-							<div key="campground 2" className="group relative">
-								<div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-									<img
-										alt=""
-										src="https://farm4.staticflickr.com/3795/10131087094_c1c0a1c859.jpg"
-										className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-									/>
-								</div>
-								<div><h2>Camp 2</h2></div>
-								<div className="mt-4 flex justify-between">
-									<div>
-										<h3 className=" text-gray-700">
-											<a href="">
-												<span aria-hidden="true" className="absolute inset-0" />
-												Details
-											</a>
-										</h3>
-										<p className="mt-1  text-gray-500">Price</p>
-									</div>
-									<p className=" font-medium text-gray-900">$20</p>
-								</div>
-							</div>
-							<div key="campground 3" className="group relative">
-								<div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-									<img
-										alt=""
-										src="https://farm4.staticflickr.com/3795/10131087094_c1c0a1c859.jpg"
-										className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-									/>
-								</div>
-								<div><h2>Camp 3</h2></div>
-								<div className="mt-4 flex justify-between">
-									<div>
-										<h3 className=" text-gray-700">
-											<a href="">
-												<span aria-hidden="true" className="absolute inset-0" />
-												Details
-											</a>
-										</h3>
-										<p className="mt-1  text-gray-500">Price</p>
-									</div>
-									<p className=" font-medium text-gray-900">$30</p>
-								</div>
-							</div>
-							{/* ))} */}
-						</div>
+						<h3 className="text-2xl font-bold tracking-tight sm:text-3xl">Newest campgrounds</h3>
+
+						{latestCamps.length > 0 
+                        ? <div className="mt-6 grid grid-flow-col grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 md:grid-col-2 lg:grid-cols-3 xl:gap-x-8">
+                            {latestCamps.map(c => <CampListItem key={c._id} {...c} />)}
+                        </div>
+                        : <h1 className="my-36 text-2xl font-bold text-center text-gray-900">No campgrounds yet</h1>}
+						
 							<div className="flex items-center pt-8 justify-center gap-x-6">
 								<Link
 									className=" rounded-md bg-cover opacity-100 bg-three-bark px-2.5 py-2 font-semibold shadow-sm hover:opacity-90 hover:scale-105"
-									to="/catalog"
+									to="/camps"
 								>
 									<span className="text-white [text-shadow:_5px_0_10px_rgb(0_0_0_/_100%)] text-lg">Catalog</span>
 								</Link>

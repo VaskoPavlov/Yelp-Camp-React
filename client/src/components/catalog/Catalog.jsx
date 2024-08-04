@@ -1,14 +1,19 @@
 import { Link } from "react-router-dom";
-import * as campsAPI from '../api/camps-api';
 import { useEffect, useState } from "react";
+
+import campsAPI from '../../api/camps-api';
+
 import CampListItem from "./CampListItem";
 
 export default function Catalog() {
     const [camps, setCamps] = useState([]);
 
     useEffect(() => {
-        campsAPI.getAll()
-            .then(result => setCamps(result));
+        (async () => {
+            const result = await campsAPI.getAll();
+
+            setCamps(result);
+        })();
     },[]);
 
     return (
