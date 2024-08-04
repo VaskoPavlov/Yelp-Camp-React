@@ -15,7 +15,11 @@ export default {
 			},
 			colors: {
 				'light-brown': '#b68a69',
-			  },
+			},
+			gridTemplateRows: {
+				'[auto,auto,1fr]': 'auto auto 1fr',
+			},
+			
 		},
 	},
 	plugins: [
