@@ -8,6 +8,7 @@ import NotFound from './components/not-found/NotFound'
 import Catalog from './components/catalog/Catalog'
 import Create from './components/create/Create'
 import About from './components/about/About'
+import Details from './components/details/Details'
 
 function App() {
 	return (
@@ -17,9 +18,10 @@ function App() {
 				<Route path="/" element={<Home />}/>
 				<Route path="/login" element={<Login />}/>
 				<Route path="/register" element={<Register />}/>
-				<Route path="/catalog" element={<Catalog />}/>
+				<Route path="/camps" element={<Catalog />}/>
 				<Route path="/create" element={<Create />}/>
 				<Route path="/about" element={<About />}/>
+				<Route path="/camps/:campId" element={<Details />}/>
 				<Route path="*" element={<NotFound />}/>
 			</Routes>
 		</>
