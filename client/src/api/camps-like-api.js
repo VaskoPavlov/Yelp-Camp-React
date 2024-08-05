@@ -1,4 +1,4 @@
-import * as requester from './requester.js';
+import * as request from './requester.js';
 
 const BASE_URL = 'http://localhost:3030/data/likes';
 
@@ -10,7 +10,7 @@ const getAll = (campId) => {
         load: `author=_ownerId:users`
     });
 
-    return requester.get(`${BASE_URL}?${params.toString()}`);
+    return request.get(`${BASE_URL}?${params.toString()}`);
 };
 
 const likesAPI = {
