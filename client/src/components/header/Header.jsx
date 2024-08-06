@@ -1,37 +1,26 @@
 'use client'
 
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import {
 	Dialog,
 	DialogPanel,
 	Disclosure,
-	DisclosureButton,
-	DisclosurePanel,
 	Popover,
-	PopoverButton,
 	PopoverGroup,
-	PopoverPanel,
 } from '@headlessui/react'
 import {
 	Bars3Icon,
 	XMarkIcon,
-	MapPinIcon
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom'
 
 import YelpCamp from '../../public/images/YelpCampLogo.png'
-// import HeaderButton from './header-button'
 import styles from './header-button.module.css';
-
-const seasons = [
-	{ name: 'Spring', description: 'Moderate temperatures and the beauty of nature', to: '/catalog/spring', icon: MapPinIcon },
-	{ name: 'Summer', description: 'Seaside campgrounds with natural shade', to: '/catalog/summer', icon: MapPinIcon },
-	{ name: 'Fall', description: 'Mountains with trees of various leaf colors', to: '/catalog/fall', icon: MapPinIcon },
-]
+import { AuthContext } from '../../contexts/AuthContext'
 
 export default function Header() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+	const {isAuthenticated, email} = useContext(AuthContext);
 
 	return (
 		<header className="bg-white fixed top-0 w-full z-10">
@@ -53,56 +42,39 @@ export default function Header() {
 					</button>
 				</div>
 				<PopoverGroup className="hidden lg:flex lg:gap-x-1">
-					<Popover className="relative">
-						<PopoverButton className="flex items-center px-3 py-1 gap-x-1 text-lg font-bold leading-6">
-							<span className={styles.textAndBorderImage}>Seasons</span>
-							<ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none" />
-						</PopoverButton>
-						<PopoverPanel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
-							<div className="p-4">
-								{seasons.map((item) => (
-									<div
-										key={item.name}
-										className="group relative flex items-center gap-x-6 rounded-lg p-4 leading-6 hover:bg-gray-50"
-									>
-										<div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-											<item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" />
-										</div>
-										<div className="flex-auto">
-											<Link to={item.to} className="block font-bold text-gray-900">
-												{item.name}
-												<span className="absolute inset-0" />
-											</Link>
-											<p className="mt-1 text-gray-600">{item.description}</p>
-										</div>
-									</div>
-								))}
-							</div>
-						</PopoverPanel>
-					</Popover>
-					<Link to="/catalog" className="px-3 py-1 text-lg font-bold leading-6">
-						<span className={styles.textImage}>Catalog</span>
-					</Link>
-					{/* */}
-					<Link to="/create" className="px-3 py-1 text-lg font-bold leading-6">
-						<span className={styles.textImage}>Create</span>
-					</Link>
-					<Link to="/about" className="px-3 py-1 text-lg font-bold leading-6">
-						<span className={styles.textImage}>About</span>
-					</Link>
+					<div>
+						<Link to="/about" className="px-3 text-lg font-bold leading-6">
+							<span className={styles.textImage}>About</span>
+						</Link>
+						<Link to="/camps" className="px-3 text-lg font-bold leading-6">
+							<span className={styles.textImage}>Catalog</span>
+						</Link>
+					</div>
+					{isAuthenticated
+						? ( 
+							<div>
+								<Link to="/create" className="px-3 py-1 text-lg font-bold leading-6">
+									<span className={styles.textImage}>Create</span>
+								</Link>
+								<Link to="/logout" className="px-3 py-1 text-lg font-bold leading-6 text-gray-900">
+									Logout
+								</Link>
+								<Link to="/profile" className="px-3 py-1 text-lg underline decoration-wavy font-bold leading-6 text-gray-900">
+									{email}
+								</Link>
+							</div> 
+						)
+						: ( 
+							<div>
+								<Link to="/login" className="px-3 py-1 text-lg font-bold leading-6 text-gray-900">
+									Login
+								</Link>
+								<Link to="/register" className="px-3 py-1 text-lg font-bold leading-6 text-gray-900">
+									Register
+								</Link>
+							</div> 
+						)}
 				</PopoverGroup>
-				<div className="hidden lg:flex lg:flex-1 lg:justify-end">
-					<Link to="/logout" className="m-3 text-lg font-bold leading-6 text-gray-900">
-						Logout
-					</Link>
-					<Link to="/login" className="m-3 text-lg font-bold leading-6 text-gray-900">
-						Login
-					</Link>
-					<Link to="/register" className="m-3 text-lg font-bold leading-6 text-gray-900">
-						Register
-					</Link>
-				</div>
-				{/* <HeaderButton>123454</HeaderButton> Use the HeaderButton component */}
 			</nav>
 			<Dialog open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} className="lg:hidden">
 				<div className="fixed inset-0 z-10" />
@@ -125,11 +97,11 @@ export default function Header() {
 						<div className="-my-6 divide-y divide-gray-500/10">
 							<div className="space-y-2 py-6 menu">
 								<Disclosure as="div" className="-mx-3">
-									<DisclosureButton className="text-lg group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-bold leading-7 hover:bg-gray-50">
+									{/* <DisclosureButton className="text-lg group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-bold leading-7 hover:bg-gray-50">
 										<span className={styles.textAndBorderImage}>Seasons</span>
 										<ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none group-data-[open]:rotate-180" />
-									</DisclosureButton>
-									<DisclosurePanel className="mt-2 space-y-2">
+									</DisclosureButton> */}
+									{/* <DisclosurePanel className="mt-2 space-y-2">
 										{seasons.map((item) => (
 											<Link
 												key={item.name}
@@ -139,10 +111,10 @@ export default function Header() {
 												{item.name}
 											</Link>
 										))}
-									</DisclosurePanel>
+									</DisclosurePanel> */}
 								</Disclosure>
 								<Link
-									to="/catalog"
+									to="/camps"
 									className="-mx-3 text-lg block rounded-lg px-3 py-2 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
 								>
 									<span className={styles.textImage}>Catalog</span>
