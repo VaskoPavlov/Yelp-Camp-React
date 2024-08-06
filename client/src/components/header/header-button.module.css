@@ -19,7 +19,7 @@
 }
 
 .textImage {
-  display: inline-block;
+  display: inline;
   font-weight: 800;
   text-indent: 0; /* Reset text-indent */
   padding: 2px 8px; /* Adjust padding as needed */
