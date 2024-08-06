@@ -36,13 +36,11 @@ export default function Home() {
 					<p className="mt-8 text-2xl leading-8 text-gray-600">
 						Soon to include every public campground in the world
 					</p>
-					{/* Campgrounds - 3 most recents*/}
-					<div className="rounded-3xl p-px bg-gradient-to-b from-[#dde0ce] to-transparent opacity-90 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]
-									mx-auto max-w-2xl px-4 mt-10 py-10 sm:px-6 sm:py-10 lg:max-w-6xl lg:px-20">
+					<div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
 						<h3 className="text-2xl font-bold tracking-tight sm:text-3xl">Newest campgrounds</h3>
 
 						{latestCamps.length > 0 
-                        ? <div className="mt-6 grid grid-flow-col grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 md:grid-col-2 lg:grid-cols-3 xl:gap-x-8">
+                        ? <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 lg:grid-cols-3 xl:gap-x-8">
                             {latestCamps.map(c => <CampListItem key={c._id} {...c} />)}
                         </div>
                         : <h1 className="my-36 text-2xl font-bold text-center text-gray-900">No campgrounds yet</h1>}
