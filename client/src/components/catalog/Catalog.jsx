@@ -4,17 +4,10 @@ import { useEffect, useState } from "react";
 import campsAPI from '../../api/camps-api';
 
 import CampListItem from "./CampListItem";
+import { useGetAllCamps } from "../../hooks/useCamps";
 
 export default function Catalog() {
-    const [camps, setCamps] = useState([]);
-
-    useEffect(() => {
-        (async () => {
-            const result = await campsAPI.getAll();
-
-            setCamps(result);
-        })();
-    },[]);
+    const [camps] = useGetAllCamps();
 
     return (
         <div className="m-20">
