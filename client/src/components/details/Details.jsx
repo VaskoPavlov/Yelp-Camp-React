@@ -3,25 +3,47 @@
 import { StarIcon } from '@heroicons/react/20/solid'
 import { useEffect, useState } from 'react'
 import campsAPI from '../../api/camps-api'
-import { useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useGetOneCamps } from '../../hooks/useCamps'
+import Like from './CampLike'
+import { useAuthContext } from '../../contexts/AuthContext'
+import { useForm } from '../../hooks/useForm'
 
-function classNames(...classes) {
-	return classes.filter(Boolean).join(' ')
-}
+const likeHandler = (newLike) => {
+	dispatchLikes({type: 'LIKE', payload: newLike });
+};
+
+// const likedId = likes.find((like) => like._ownerId == userId)?._id;
+
+// const isOwner = userId == reportError._ownerId;
+// const hasLiked = !!likes.find((l) => l._ownerid == userId);
+
 
 export default function Details() {
-	const reviews = { href: '#', average: 4, totalCount: 117 }
-	const rating = 3;
-	const [camp, setCamp] = useState({});
+	const navigate = useNavigate();
+	const {userId} = useAuthContext()
 	const { campId } = useParams();
+	const [camp] = useGetOneCamps(campId);
+	const isOwner = userId === camp._ownerId;
+	
+	const campEditHandler = async (values) => {
+		const isConfirmed = confirm('Are you sure you want to update this camp?');
+		if (isConfirmed) {
+            await campsAPI.updateCamp(campId, values);
 
-	useEffect(() => {
-		(async () => {
-			const result = await campsAPI.getById(campId);
-			setCamp(result);
-		})();
-	});
+            navigate(`/camps/${campId}`);
+        }
+	}
 
+	const campDeleteHandler = async () => {
+		try {
+			await campsAPI.deleteCamp(campId);
+
+			navigate('/');
+		} catch (error) {
+			console.log(err.message);
+		}
+	}
 	return (
 		<div className="my-48 mx-48">
 			<div
@@ -63,30 +85,27 @@ export default function Details() {
 							<div className="mt-2">
 								<p className="text-lg font-medium text-gray-900">{camp.location}</p>
 
-								<div className="mt-2">
-									<p className="text-sm text-gray-600">Category:<span className="font-bold">Summer</span></p>
-								</div>
 							</div>
 							<div className="mt-2">
 								<div className="flex">
 									<div className="flex ">
-										{[0, 1, 2, 3, 4].map((rating) => (
-											<StarIcon
-												key={rating}
-												aria-hidden="true"
-												className={classNames(
-													reviews.average > rating ? 'text-gray-900' : 'text-gray-200',
-													'h-5 w-5 flex-shrink-0',
-												)}
-											/>
-										))}
+										{/* {hasLiked 
+											? <h1>You have already like this Campground!</h1>
+											: <Like campId={campId} onLike={likeHandler}/>
+										} */}
 									</div>
-									<p className="sr-only">{reviews.average} out of 5 stars</p>
-									<a href={reviews.href} className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
-										{reviews.totalCount} reviews
-									</a>
 								</div>
 							</div>
+							{isOwner && (
+								<div className="mt-2">
+									<Link to={`/camps/${campId}/edit`} onClick={campEditHandler} className="border bg-yellow-200 text-black rounded px-2 py-1 mr-10">
+										Edit
+									</Link>
+									<Link onClick={campDeleteHandler} className="border bg-red-900 text-white rounded px-2 py-1">
+										Delete
+									</Link>
+								</div>
+							)}
 						</div>
 					</div>
 				</div>

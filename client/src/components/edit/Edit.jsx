@@ -1,33 +1,44 @@
-import { useNavigate } from "react-router-dom";
-import { useCreateCamp } from "../../hooks/useCamps";
-import { useForm } from "../../hooks/useForm";
-import { useState } from "react";
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import campsAPI from '../../api/camps-api';
 
-const initialValues = {name: '', imageUrl: '', description: '', price: '', location: ''};
+const initialValues = { name: '', imageUrl: '', description: '', price: '', location: '' };
 
-export default function Create() {
-    const [errors, setErrors] = useState('');
+export default function Edit() {
     const navigate = useNavigate();
-    const createCampground = useCreateCamp();
+    const { campId } = useParams();
+    const [values, setValues] = useState(initialValues);
+    const [errors, setErrors] = useState(null);
 
-    const createHandler = async (values) => {
-        try {
-            const response = await createCampground(values);
-            if (response && response._id) {
-                navigate(`/camps/${response._id}`);
-            } else {
-                setErrors('Failed to create camp.');
+    useEffect(() => {
+        const fetchCamp = async () => {
+            try {
+                const camp = await campsAPI.getCamp(campId);
+                setValues(camp);
+            } catch (error) {
+                setErrors(error.message);
             }
+        };
+        fetchCamp();
+    }, [campId]);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setValues((prevValues) => ({
+            ...prevValues,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await campsAPI.updateCamp(campId, values);
+            navigate(`/camps/${campId}`);
         } catch (error) {
             setErrors(error.message);
         }
     };
-
-    const {
-        values,
-        changeHandler,
-        submitHandler
-    } = useForm(initialValues, createHandler);
 
     return (
         <div className="m-20">
@@ -37,15 +48,14 @@ export default function Create() {
             >
                 <div
                     style={{
-                        clipPath:
-                            'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+                        clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
                     }}
                     className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ae754e] to-[#bcf7d1] opacity-70 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
                 />
             </div>
             <div className="my-48 mx-auto bg-white rounded-lg shadow-lg border overflow-hidden max-w-sm lg:max-w-md w-full p-12">
-                <form onSubmit={submitHandler}>
-                    <h2 className="text-lg font-bold leading-7 text-center text-gray-900">Create</h2>
+                <form onSubmit={handleSubmit}>
+                    <h2 className="text-lg font-bold leading-7 text-center text-gray-900">Edit</h2>
                     <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         {errors && <div className="col-span-full text-red-500">{errors}</div>}
                         <div className="col-span-full">
@@ -59,7 +69,7 @@ export default function Create() {
                                         name="name"
                                         type="text"
                                         value={values.name}
-                                        onChange={changeHandler}
+                                        onChange={handleChange}
                                         required
                                         placeholder="Campground name"
                                         autoComplete="name"
@@ -79,7 +89,7 @@ export default function Create() {
                                         name="imageUrl"
                                         type="url"
                                         value={values.imageUrl}
-                                        onChange={changeHandler}
+                                        onChange={handleChange}
                                         placeholder="Image Url"
                                         autoComplete="imageUrl"
                                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
@@ -96,7 +106,7 @@ export default function Create() {
                                     id="description"
                                     name="description"
                                     value={values.description}
-                                    onChange={changeHandler}
+                                    onChange={handleChange}
                                     required
                                     rows={3}
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -115,7 +125,7 @@ export default function Create() {
                                         name="price"
                                         type="number"
                                         value={values.price}
-                                        onChange={changeHandler}
+                                        onChange={handleChange}
                                         required
                                         placeholder="$$$"
                                         autoComplete="price"
@@ -136,9 +146,9 @@ export default function Create() {
                                         name="location"
                                         type="text"
                                         value={values.location}
-                                        onChange={changeHandler}
+                                        onChange={handleChange}
                                         required
-                                        placeholder="Region, Country"
+                                        placeholder="Campground location"
                                         autoComplete="location"
                                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                     />
@@ -146,24 +156,15 @@ export default function Create() {
                             </div>
                         </div>
                         <div className="col-span-full">
-                            <button type="submit" className="bg-threeBark [text-shadow:_5px_0_10px_rgb(0_0_0_/_100%)] bg-cover text-white text-lg font-bold py-2 px-4 w-full rounded hover:opacity-90 hover:scale-105">
-                                Create
+                            <button
+                                type="submit"
+                                className="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            >
+                                Edit
                             </button>
                         </div>
                     </div>
                 </form>
-            </div>
-            <div
-                aria-hidden="true"
-                className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-            >
-                <div
-                    style={{
-                        clipPath:
-                            'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-                    }}
-                    className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#bcf7d1] to-[#ae754e] opacity-60 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-                />
             </div>
         </div>
     );

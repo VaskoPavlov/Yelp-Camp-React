@@ -10,9 +10,12 @@ const login = (email, password) => request.post(`${BASE_URL}/login`, {email, pas
 
 const register = (email, password) => request.post(`${BASE_URL}/register`, {email, password})
 
+const logout = () => request.get(`${BASE_URL}/logout`);
+
 const authAPI = {
     login,
-    register
+    register,
+    logout
 }
 
 export default authAPI

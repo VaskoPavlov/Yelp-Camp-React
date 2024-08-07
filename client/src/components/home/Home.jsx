@@ -1,9 +1,11 @@
 'use client'
 
 import { Link } from 'react-router-dom'
-import campsAPI from '../../api/camps-api';
 import { useEffect, useState } from 'react';
+
+import campsAPI from '../../api/camps-api';
 import CampListItem from '../catalog/CampListItem';
+import { useLatestCamps } from '../../hooks/useCamps';
 
 export default function Home() {
 	const [latestCamps, setLatestCamps] = useState([]);
@@ -12,8 +14,9 @@ export default function Home() {
 			const result = await campsAPI.getAll();
 			// const latestData = result.length % 3 === 0 ? result.reverse().slice(3) : result.reverse().slice(2)
 			setLatestCamps(result.reverse().slice(0,3));
-		})();
+		})([]);
 	})
+	// const latestCamps = useLatestCamps();
 	return (
 		<div className="m-20">
 			<div

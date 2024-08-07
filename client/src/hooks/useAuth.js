@@ -2,7 +2,7 @@
 import { useContext } from "react";
 
 import authAPI from "../api/user-api"
-import { AuthContext } from "../contexts/AuthContext.jsx";
+import { AuthContext, useAuthContext } from "../contexts/AuthContext.jsx";
 
 export const useLogin = () => {
     const {changeAuthState} = useContext(AuthContext);
@@ -30,4 +30,20 @@ export const useRegister = () => {
     }
 
     return registerHandler;
+}
+
+export const useLogout = () => {
+    const { logout: localLogout } = useAuthContext();
+
+    const logoutHandler = async () => {
+        try {
+            await authAPI.logout();
+            localLogout();
+        } catch(err) {
+            localStorage.clear();
+            window.location.reload();
+        }
+    }
+
+    return logoutHandler;
 }

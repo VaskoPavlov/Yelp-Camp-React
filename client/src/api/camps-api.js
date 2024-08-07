@@ -22,12 +22,23 @@ export const getUserCamps = async (userId) => {
     return userCamps;
 }
 
+export const updateCamp = async (campId, campData) => {
+    const result = await request.put(`${BASE_URL}/${campId}`, campData);
+    return result;
+}
+
+export const deleteCamp = async (campId) => {
+    await request.del(`${BASE_URL}/${campId}`);
+}
+
 const campsAPI = {
     getAll,
     getById,
     createCamp,
     getRecentCamps,
     getUserCamps,
+    updateCamp,
+    deleteCamp
 }
 
 export default campsAPI
