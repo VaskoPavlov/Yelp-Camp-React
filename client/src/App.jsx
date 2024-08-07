@@ -14,20 +14,6 @@ import Footer from './components/footer/Footer'
 import { AuthContext } from './contexts/AuthContext'
 
 function App() {
-	const [authState, setAuthState] = useState({});
-
-	const changeAuthState = (state) => {
-		setAuthState(state);
-	};
-
-	const contextData = {
-		userId: authState._id,
-		email: authState.email,
-		accessToken: authState.accessToken,
-		isAuthenticated: !!authState.email,
-		changeAuthState,
-	};
-
 	return (
 		<>
 			<AuthContext.Provider value={contextData}>
