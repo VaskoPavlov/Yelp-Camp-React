@@ -6,53 +6,28 @@ export const getAll = () => request.get(BASE_URL);
 
 export const getById = (campId) => request.get(`${BASE_URL}/${campId}`);
 
-// export const create = async(data, authorId) {
-//     //TODO extractproperies from data
-//     const record = new Data({
-//         prop: data.prop,
-//         author: authorId
-//     });
+export const createCamp = (values) => request.post(`${BASE_URL}`, values);
 
-//     await record.save();
+export const getRecentCamps = async () => {
+    const result = await request.get(`${BASE_URL}?sortBy=_createdOn%20desc&offset=0&pageSize=3`);
+    const latestCamps = Object.values(result);
+  
+    return latestCamps;
+};
 
-//     return record;
-// }
+export const getUserCamps = async (userId) => {
+    const result = await request.get(`${BASE_URL}?where=_ownerId%3D%22${userId}%22`)
+    const userCamps = Object.values(result);
 
-// export const update = async(id, data, userId) {
-//     const record = await Data.findById(id);
-
-//     if (!record) {
-//         throw new ReferenceError('Record not found' + id);
-//     }
-
-//     if (record.author.toString() != userId) {
-//         throw new Error('Access denied');
-//     }
-
-//     //TODO replacewith real properties
-//     record.prop = data.prop;
-//     await record.save();
-
-//     return record;
-// }
-
-// export const deleteById = async(id, userId) {
-//     const record = await Data.findById(id);
-
-//     if (!record) {
-//         throw new ReferenceError('Record not found' + id);
-//     }
-
-//     if (record.author.toString() != userId) {
-//         throw new Error('Access denied');
-//     }
-
-//     await Data.findByIdAndDelete(id);
-// }
+    return userCamps;
+}
 
 const campsAPI = {
     getAll,
-    getById
+    getById,
+    createCamp,
+    getRecentCamps,
+    getUserCamps,
 }
 
 export default campsAPI
