@@ -1,4 +1,5 @@
-import { createContext } from "react";
+import { createContext, useContext, useState } from "react";
+import usePersistedState from "../hooks/usePersistedState";
 
 
 export const AuthContext = createContext({
@@ -10,7 +11,7 @@ export const AuthContext = createContext({
 });
 
 export function AuthContextProvider(props) {
-    const [authState, setAuthState] = useState({});
+    const [authState, setAuthState] = usePersistedState('auth', {}); 
 
     const changeAuthState = (state) => {
 		localStorage.setItem('accessToken', state.accessToken);
@@ -31,4 +32,10 @@ export function AuthContextProvider(props) {
             {props.children}
         </AuthContext.Provider>
     )
+}
+
+export function useAuthContext() {
+    const authData = useContext(AuthContext);
+
+    return authData;
 }
