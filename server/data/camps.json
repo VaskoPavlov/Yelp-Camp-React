@@ -1,42 +1,52 @@
 {
-    "e78d07a4-2b13-4125-82f7-e0942d84cdf1": {
+    "1273da79-4996-40c9-975f-51e1a666a682": {
+        "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
         "name": "Eco camping Batak",
         "imageUrl": "https://cdn.prod.v2.camping.info/media/campsites/eco-camping-batak/tcN3MU7QMUGl.jpg.webp",
         "description": "Eco Camping Batak, Bulgaria is a new campsite which was opened in 2011. It is situated on the picturesque lake Batak in the Rhodope Mountain - one of the most beautiful mountains on the Balkan peninsula, covered with centuries old pine forest and many beautiful lakes giving the visitor excellent panoramic views and conditions for rest, active tourism and sports.",
         "price": "19",
         "location": "4580 Batak, Bulgaria",
-        "_id": "e78d07a4-2b13-4125-82f7-e0942d84cdf1"
+        "_createdOn": 1723039314315,
+        "_id": "1273da79-4996-40c9-975f-51e1a666a682"
     },
-    "f3c56249-c0a3-4e12-9c24-872cac42ebde": {
+    "469bff2c-1451-4bdc-9c35-e5bfb56a5881": {
+        "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
         "name": "Fundy National Park Of Canada",
         "imageUrl": "https://lh5.googleusercontent.com/p/AF1QipPgcUPSpCBHOY57oNJ8o7dUn7labMmbM7Z6ToyG=w184-h184-n-k-no",
         "description": "The park showcases a rugged coastline which rises up to the Canadian Highlands, the highest tides in the world and more than 25 waterfalls. The park covers an area of 207 km2 (80 sq mi) along Goose Bay, the northwestern branch of the Bay of Fundy.",
         "price": "25",
         "location": "Alma, NB, Canada",
-        "_id": "f3c56249-c0a3-4e12-9c24-872cac42ebde"
+        "_createdOn": 1723039355605,
+        "_id": "469bff2c-1451-4bdc-9c35-e5bfb56a5881"
     },
-    "841763d6-3622-42a0-b204-06f66243d190": {
+    "0970fce4-24ad-4547-be10-0e3f38682687": {
+        "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
         "name": "Gryta Camping",
         "imageUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.gettyimages.com%2Fphotos%2Fcamping-norway&psig=AOvVaw27OH1B3T6zRYWy5evT4I4F&ust=1722875941710000&source=images&opi=89978449",
         "description": "Gryta camping is a starting point for the hike to Storesteinen in Gytridalen, with a breathtaking view to Gytrifossen waterfall. The Briksdal Glacier, Olden, Loen Skylift, Loen Play and Stryn is just a short drive from the camping ground.",
         "price": "30",
         "location": "Oldedalsvegen 1272, 6788 Olden, Norway",
-        "_id": "841763d6-3622-42a0-b204-06f66243d190"
+        "_createdOn": 1723039381262,
+        "_id": "0970fce4-24ad-4547-be10-0e3f38682687"
     },
-    "3539705d-0186-4a8f-ae48-fc9b02df2e03":{
+    "f033588c-7198-40a9-8c3d-f624186c7e3d": {
+        "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
         "name": "Powder River Campground",
         "imageUrl": "https://hipcamp-res.cloudinary.com/f_auto,c_limit,w_950,q_auto:eco/v1690872116/dev-campground-photos/w0c4zanaq4erimdtgege.jpg",
         "description": "Powder River Campground is conveniently located off Interstate 25 in the heart of Cowboy Country. Stop for a night, a week, or longer and enjoy hiking where Butch Cassidy hid from the law, a local rodeo, or just peace and quiet.",
         "price": "40",
         "location": "Kaycee, Johnson, Wyoming, United States",
-        "_id": "3539705d-0186-4a8f-ae48-fc9b02df2e03"
+        "_createdOn": 1723039396838,
+        "_id": "f033588c-7198-40a9-8c3d-f624186c7e3d"
     },
-    "2ef10ea4-cce9-44fd-ba2f-6da128231293":{
+    "b985cec7-2886-413b-80c7-509f992bef54": {
+        "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
         "name": "NordCamping Petrozavodsk",
         "imageUrl": "https://lh3.googleusercontent.com/p/AF1QipM4fOZHlSb0XpP80KuzjebLrtvTXq3u1u5WelK4=s1360-w1360-h1020",
         "description": "The campsites is located in the center of the city, on the shore of the Onego Lake.Shops, cafes and restaurants are within walking distance. Next to the campsite is the beautiful city Quay and park.A short five minutes by foot are the Piers, a ship‘s departure place to the Kizhi Museum, one of the largest open air museums in Russia, a UNESCO World Heritage site.Campsites offers the following improvements for the guests: Water, electric and sewer hook-ups.Toilets and showers with hot water",
         "price": "18",
         "location": "Str. Rigachina 3, 185005 Petrozavodsk, Russia",
-        "_id": "2ef10ea4-cce9-44fd-ba2f-6da128231293"
+        "_createdOn": 1723039417266,
+        "_id": "b985cec7-2886-413b-80c7-509f992bef54"
     }
 }
