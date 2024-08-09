@@ -10,8 +10,37 @@ export default function Register() {
     const [error, setError] = useState('');
     const register = useRegister();
     const navigate = useNavigate();
+    const [emailError, setEmailError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return 'Please enter a valid email address';
+        }
+        return '';
+    };
+
+    const validatePassword = (password) => {
+        if (password.length < 4) {
+            return 'Password should be at least 4 characters long';
+        }
+        if (/\s/.test(password)) {
+            return 'Password should not contain spaces';
+        }
+        return '';
+    };
 
     const registerHandler = async ({ email, password, rePass }) => {
+        const emailErrorMessage = validateEmail(email);
+        const passwordErrorMessage = validatePassword(password);
+
+        if (emailErrorMessage || passwordErrorMessage) {
+            setEmailError(emailErrorMessage);
+            setPasswordError(passwordErrorMessage);
+            return;
+        }
+
         if (password !== rePass) {
             return setError('Password don\'t match');
         }
@@ -61,6 +90,7 @@ export default function Register() {
                                     placeholder="name@email.com"
                                     required
                                 />
+                                {emailError && <p className="text-red-600 text-sm mt-2">{emailError}</p>}
                             </div>
                             <div className="mt-4 flex flex-col justify-between">
                                 <div className="flex justify-between">
@@ -75,6 +105,7 @@ export default function Register() {
                                     onChange={changeHandler}
                                     value={values.password}
                                 />
+                                {passwordError && <p className="text-red-600 text-sm mt-2">{passwordError}</p>}
                             </div>
                             <div className="mt-4 flex flex-col justify-between">
                                 <div className="flex justify-between">
