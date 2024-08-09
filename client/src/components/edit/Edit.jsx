@@ -1,44 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import campsAPI from '../../api/camps-api';
+import campsAPI, { updateCamp } from '../../api/camps-api';
+import { useGetOneCamps } from '../../hooks/useCamps';
+import { useForm } from '../../hooks/useForm';
 
 const initialValues = { name: '', imageUrl: '', description: '', price: '', location: '' };
 
 export default function Edit() {
     const navigate = useNavigate();
     const { campId } = useParams();
-    const [values, setValues] = useState(initialValues);
+    const [camp, setCamp] = useGetOneCamps(campId);
     const [errors, setErrors] = useState(null);
 
-    useEffect(() => {
-        const fetchCamp = async () => {
-            try {
-                const camp = await campsAPI.getCamp(campId);
-                setValues(camp);
-            } catch (error) {
-                setErrors(error.message);
-            }
-        };
-        fetchCamp();
-    }, [campId]);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setValues((prevValues) => ({
-            ...prevValues,
-            [name]: value,
-        }));
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await campsAPI.updateCamp(campId, values);
-            navigate(`/camps/${campId}`);
-        } catch (error) {
-            setErrors(error.message);
-        }
-    };
+    const {
+        changeHandler,
+        submitHandler,
+        values,
+    } = useForm(Object.assign(initialValues, camp), async (values) => {
+        await campsAPI.updateCamp(campId, values);
+        navigate(`/camps/${campId}`);
+    });
 
     return (
         <div className="m-20">
@@ -54,7 +35,7 @@ export default function Edit() {
                 />
             </div>
             <div className="my-48 mx-auto bg-white rounded-lg shadow-lg border overflow-hidden max-w-sm lg:max-w-md w-full p-12">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={submitHandler}>
                     <h2 className="text-lg font-bold leading-7 text-center text-gray-900">Edit</h2>
                     <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         {errors && <div className="col-span-full text-red-500">{errors}</div>}
@@ -69,7 +50,7 @@ export default function Edit() {
                                         name="name"
                                         type="text"
                                         value={values.name}
-                                        onChange={handleChange}
+                                        onChange={changeHandler}
                                         required
                                         placeholder="Campground name"
                                         autoComplete="name"
@@ -89,7 +70,7 @@ export default function Edit() {
                                         name="imageUrl"
                                         type="url"
                                         value={values.imageUrl}
-                                        onChange={handleChange}
+                                        onChange={changeHandler}
                                         placeholder="Image Url"
                                         autoComplete="imageUrl"
                                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
@@ -106,7 +87,7 @@ export default function Edit() {
                                     id="description"
                                     name="description"
                                     value={values.description}
-                                    onChange={handleChange}
+                                    onChange={changeHandler}
                                     required
                                     rows={3}
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -125,7 +106,7 @@ export default function Edit() {
                                         name="price"
                                         type="number"
                                         value={values.price}
-                                        onChange={handleChange}
+                                        onChange={changeHandler}
                                         required
                                         placeholder="$$$"
                                         autoComplete="price"
@@ -146,7 +127,7 @@ export default function Edit() {
                                         name="location"
                                         type="text"
                                         value={values.location}
-                                        onChange={handleChange}
+                                        onChange={changeHandler}
                                         required
                                         placeholder="Campground location"
                                         autoComplete="location"
@@ -158,7 +139,7 @@ export default function Edit() {
                         <div className="col-span-full">
                             <button
                                 type="submit"
-                                className="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                className="bg-threeBark [text-shadow:_5px_0_10px_rgb(0_0_0_/_100%)] bg-cover text-white text-lg font-bold py-2 px-4 w-full rounded hover:opacity-90 hover:scale-105"
                             >
                                 Edit
                             </button>
