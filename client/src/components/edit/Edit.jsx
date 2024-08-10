@@ -17,6 +17,11 @@ export default function Edit() {
         submitHandler,
         values,
     } = useForm(Object.assign(initialValues, camp), async (values) => {
+        const parsedPrice = parseFloat(values.price);
+        if (isNaN(parsedPrice) || parsedPrice < 1) {
+            setErrors('Price must be a valid number greater than 0');
+            return;
+        }
         await campsAPI.updateCamp(campId, values);
         navigate(`/camps/${campId}`);
     });
