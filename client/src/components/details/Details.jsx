@@ -1,38 +1,34 @@
 'use client'
+import { useEffect, useReducer, useState } from 'react'
 
-import { StarIcon } from '@heroicons/react/20/solid'
-import { useEffect, useState } from 'react'
+import { HeartIcon as OutlineHeartIcon } from '@heroicons/react/24/outline';
+import { HeartIcon } from '@heroicons/react/24/solid';
+import { StarIcon } from '@heroicons/react/20/solid';
+
 import campsAPI from '../../api/camps-api'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useGetOneCamps } from '../../hooks/useCamps'
-import Like from './CampLike'
 import { useAuthContext } from '../../contexts/AuthContext'
-import { useForm } from '../../hooks/useForm'
-
-const likeHandler = (newLike) => {
-	dispatchLikes({type: 'LIKE', payload: newLike });
-};
-
-// const likedId = likes.find((like) => like._ownerId == userId)?._id;
-
-// const isOwner = userId == reportError._ownerId;
-// const hasLiked = !!likes.find((l) => l._ownerid == userId);
+import { useCreateLikes } from '../../hooks/useLikes';
 
 
 export default function Details() {
 	const navigate = useNavigate();
-	const {userId} = useAuthContext()
-	const { campId } = useParams();
+	const {isAuthenticated} = useAuthContext();
+	const { userId } = useAuthContext()
+	const { campId } = useParams(); 
 	const [camp] = useGetOneCamps(campId);
-	const isOwner = userId === camp._ownerId;
-	
+	const isOwner = userId === camp._ownerId; 
+
+	const { likeCount, hasLiked, toggleLike } = useCreateLikes(campId, userId);
+
 	const campEditHandler = async (values) => {
 		const isConfirmed = confirm('Are you sure you want to update this camp?');
 		if (isConfirmed) {
-            await campsAPI.updateCamp(campId, values);
+			await campsAPI.updateCamp(campId, values);
 
-            navigate(`/camps/${campId}`);
-        }
+			navigate(`/camps/${campId}`);
+		}
 	}
 
 	const campDeleteHandler = async () => {
@@ -89,10 +85,21 @@ export default function Details() {
 							<div className="mt-2">
 								<div className="flex">
 									<div className="flex ">
-										{/* {hasLiked 
-											? <h1>You have already like this Campground!</h1>
-											: <Like campId={campId} onLike={likeHandler}/>
-										} */}
+										{isAuthenticated 
+										? (<button
+											onClick={toggleLike}
+											disabled={hasLiked}
+											className={`heart-btn ${hasLiked ? 'disabled' : ''}`}
+										>
+											{hasLiked ? (
+												<HeartIcon className="w-8 h-8 text-pink-500" />
+											) : (
+												<OutlineHeartIcon className="w-8 h-8 text-gray-500" />
+											)}
+										</button>
+										): (
+											''
+										)}
 									</div>
 								</div>
 							</div>
@@ -106,6 +113,7 @@ export default function Details() {
 									</Link>
 								</div>
 							)}
+							<span>{likeCount} {likeCount === 1 ? 'Like' : 'Likes'}</span>
 						</div>
 					</div>
 				</div>

@@ -1339,6 +1339,14 @@
     	}
     };
     var seedData = {
+        likes: {
+            "f6ddb5d0-834e-414a-9864-f061b9e2e336":{
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                campId: "1273da79-4996-40c9-975f-51e1a666a682",
+                "_createdOn": 1723286596530,
+                "_id": "f6ddb5d0-834e-414a-9864-f061b9e2e336"
+            }
+        },
     	camps: {
             "1273da79-4996-40c9-975f-51e1a666a682": {
                 "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
