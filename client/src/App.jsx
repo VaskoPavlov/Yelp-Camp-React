@@ -15,6 +15,7 @@ import { AuthContextProvider } from './contexts/AuthContext'
 import Profile from './components/profile/Profile'
 import AuthGuard from './components/auth-guard/AuthGuard'
 import Logout from './components/logout/Logout'
+import Edit from './components/edit/Edit'
 
 function App() {
 	return (
@@ -35,7 +36,7 @@ function App() {
 							</AuthGuard>}/>
 						<Route path="/about" element={<About />}/>
 						<Route path="/camps/:campId" element={<Details />}/>
-						<Route path="/camps/:campId/edit" element={<Details />}/>
+						<Route path="/camps/:campId/edit" element={<Edit />}/>
 						<Route 
 							path="/profile" 
 							element={

@@ -54,6 +54,7 @@ export default function Login() {
                                     name="email"
                                     value={values.email}
                                     onChange={changeHandler}
+                                    placeholder="name@email.com"
                                 />
                             </div>
                             <div className="mt-4 flex flex-col justify-between">

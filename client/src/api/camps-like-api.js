@@ -2,7 +2,7 @@ import * as request from './requester.js';
 
 const BASE_URL = 'http://localhost:3030/data/likes';
 
-const create = (campId) => requester.post(BASE_URL, {campId});
+const create = (campId) => request.post(BASE_URL, {campId});
 
 const getAll = (campId) => {
     const params = new URLSearchParams({

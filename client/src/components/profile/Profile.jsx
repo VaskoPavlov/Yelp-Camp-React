@@ -7,7 +7,7 @@ export default function Profile() {
     const userCamps = useUserCamps();
     return (
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">Your campgrounds campgrounds</h3>
+        <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">Your campgrounds</h3>
     
         {userCamps.length > 0
             ? <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 lg:grid-cols-3 xl:gap-x-8">

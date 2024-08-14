@@ -1,33 +1,51 @@
 import { useNavigate } from "react-router-dom";
 import { useCreateCamp } from "../../hooks/useCamps";
 import { useForm } from "../../hooks/useForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const initialValues = {name: '', imageUrl: '', description: '', price: '', location: ''};
+const initialValues = { name: '', imageUrl: '', description: '', price: '', location: '' };
 
 export default function Create() {
-    const [errors, setErrors] = useState('');
     const navigate = useNavigate();
     const createCampground = useCreateCamp();
 
+    const validate = (values) => {
+        const errors = {};
+        if (!values.name.trim()) errors.name = 'Title is required';
+        if (!values.imageUrl.trim()) errors.imageUrl = 'Image URL is required';
+        if (!values.description.trim()) errors.description = 'Description is required';
+        if (!values.location.trim()) errors.location = 'Location is required';
+
+        const parsedPrice = parseFloat(values.price);
+        if (!values.price.trim()) errors.price = 'Price is required';
+        else if (isNaN(parsedPrice) || parsedPrice <= 0) errors.price = 'Price must be a valid number greater than 0';
+
+        return errors;
+    };
+
     const createHandler = async (values) => {
+        const parsedPrice = parseFloat(values.price);
         try {
-            const response = await createCampground(values);
+            const response = await createCampground({ ...values, price: parsedPrice });
             if (response && response._id) {
                 navigate(`/camps/${response._id}`);
             } else {
-                setErrors('Failed to create camp.');
+                console.error('Failed to create camp.');
             }
         } catch (error) {
-            setErrors(error.message);
+            console.error('Submission error:', error);
         }
     };
 
     const {
         values,
+        errors,
         changeHandler,
-        submitHandler
-    } = useForm(initialValues, createHandler);
+        submitHandler,
+        isSubmitting
+    } = useForm(initialValues, createHandler, validate);
+
+
 
     return (
         <div className="m-20">
@@ -47,7 +65,6 @@ export default function Create() {
                 <form onSubmit={submitHandler}>
                     <h2 className="text-lg font-bold leading-7 text-center text-gray-900">Create</h2>
                     <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                        {errors && <div className="col-span-full text-red-500">{errors}</div>}
                         <div className="col-span-full">
                             <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
                                 Title
@@ -66,8 +83,10 @@ export default function Create() {
                                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                     />
                                 </div>
+                                {errors.name && <div className="text-red-500 text-sm mt-1">{errors.name}</div>}
                             </div>
                         </div>
+
                         <div className="col-span-full">
                             <label htmlFor="imageUrl" className="block text-sm font-medium leading-6 text-gray-900">
                                 Image
@@ -80,13 +99,16 @@ export default function Create() {
                                         type="url"
                                         value={values.imageUrl}
                                         onChange={changeHandler}
+                                        required
                                         placeholder="Image Url"
                                         autoComplete="imageUrl"
                                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                     />
                                 </div>
+                                {errors.imageUrl && <div className="text-red-500 text-sm mt-1">{errors.imageUrl}</div>}
                             </div>
                         </div>
+
                         <div className="col-span-full">
                             <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900">
                                 Description
@@ -101,8 +123,10 @@ export default function Create() {
                                     rows={3}
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
+                                {errors.description && <div className="text-red-500 text-sm mt-1">{errors.description}</div>}
                             </div>
                         </div>
+
                         <div className="col-span-full">
                             <label htmlFor="price" className="block text-sm font-medium leading-6 text-gray-900">
                                 Price
@@ -122,9 +146,11 @@ export default function Create() {
                                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                     />
                                 </div>
+                                {errors.price && <div className="text-red-500 text-sm mt-1">{errors.price}</div>}
                                 <span><em>Other currency: convert it to USD</em></span>
                             </div>
                         </div>
+
                         <div className="col-span-full">
                             <label htmlFor="location" className="block text-sm font-medium leading-6 text-gray-900">
                                 Location
@@ -143,10 +169,16 @@ export default function Create() {
                                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                     />
                                 </div>
+                                {errors.location && <div className="text-red-500 text-sm mt-1">{errors.location}</div>}
                             </div>
                         </div>
+
                         <div className="col-span-full">
-                            <button type="submit" className="bg-threeBark [text-shadow:_5px_0_10px_rgb(0_0_0_/_100%)] bg-cover text-white text-lg font-bold py-2 px-4 w-full rounded hover:opacity-90 hover:scale-105">
+                            <button
+                                type="submit"
+                                className="bg-threeBark [text-shadow:_5px_0_10px_rgb(0_0_0_/_100%)] bg-cover text-white text-lg font-bold py-2 px-4 w-full rounded hover:opacity-90 hover:scale-105"
+                                disabled={isSubmitting || Object.keys(errors).length > 0}
+                            >
                                 Create
                             </button>
                         </div>

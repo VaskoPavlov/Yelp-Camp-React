@@ -1,31 +1,43 @@
-import { useEffect } from "react";
+import { useEffect, useState } from 'react';
+import likesAPI from '../api/camps-like-api';
 
-import likesAPI from "../api/camps-like-api";
-
-export function useCreateLike() {
-    const createHandler = (campId) => likesAPI.create(likeId);
-
-    return createHandler;
-};
-
-function likeReducer(state, action) {
-    switch (action.type) {
-        case 'GET_ALL':
-            return action.payload.slice();
-        case 'LIKE':
-            return [...state, action.payload];
-        default: return state;
-    }
-};
-
-export function useGetAllLikes(campId) {
-    const [likes, dispatchLikes] = useReducer(likeReducer, []);
+export function useCreateLikes(campId, userId) {
+    const [likes, setLikes] = useState([]);
+    const [hasLiked, setHasLiked] = useState(false);
 
     useEffect(() => {
-        (async () => {
-            const result = await likesAPI.getAll(campId)
-        })();
-    }, [campId]);
+        async function fetchLikes() {
+            try {
+                // Fetch the likes for the camp
+                const likesData = await likesAPI.getAll(campId);
+                setLikes(likesData);
 
-    return [likes, dispatchLikes];
+                // Check if the user has already liked the camp
+                const userHasLiked = likesData.some(like => like._ownerId === userId);
+                setHasLiked(userHasLiked);
+            } catch (error) {
+                console.error('Error fetching likes:', error);
+            }
+        }
+
+        fetchLikes();
+    }, [campId, userId]);
+
+    const toggleLike = async () => {
+        try {
+            if (!hasLiked) {
+                const newLike = await likesAPI.create(campId);
+                setLikes([...likes, newLike]);
+                setHasLiked(true);
+            }
+        } catch (error) {
+            console.error('Error handling like:', error);
+        }
+    };
+
+    return {
+        likeCount: likes.length,
+        hasLiked,
+        toggleLike,
+    };
 }
