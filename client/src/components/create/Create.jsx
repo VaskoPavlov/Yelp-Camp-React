@@ -177,7 +177,7 @@ export default function Create() {
                             <button
                                 type="submit"
                                 className="bg-threeBark [text-shadow:_5px_0_10px_rgb(0_0_0_/_100%)] bg-cover text-white text-lg font-bold py-2 px-4 w-full rounded hover:opacity-90 hover:scale-105"
-                                disabled={isSubmitting || Object.keys(errors).length > 0}
+                                disabled={isSubmitting} // || Object.keys(errors).length > 0
                             >
                                 Create
                             </button>
