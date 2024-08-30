@@ -10,6 +10,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useGetOneCamps } from '../../hooks/useCamps'
 import { useAuthContext } from '../../contexts/AuthContext'
 import { useCreateLikes } from '../../hooks/useLikes';
+import GoogleMap from '../google-map/GoogleMap';
 
 
 export default function Details() {
@@ -58,7 +59,7 @@ export default function Details() {
 				<div className="pt-6">
 					{/* Image gallery */}
 					<div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-						<div className="border bg-gray-200 aspect-h-3 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
+						<div className="border bg-gray-200 aspect-h-3 aspect-w-3 overflow-hidden rounded-lg lg:block">
 							<img
 								alt={camp.name}
 								src={camp.imageUrl}
@@ -118,6 +119,15 @@ export default function Details() {
 					</div>
 				</div>
 			</div>
+				<div className="my-10 mx-auto w-5/6">
+				<GoogleMap
+                    lat={camp.lat}
+                    lng={camp.lng}
+                    name={camp.name}
+                    location={camp.location}
+                    description={camp.description}
+                />
+				</div>
 			<div
 				aria-hidden="true"
 				className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
