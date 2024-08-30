@@ -1,1 +1,2 @@
 client/src/.env
+client/src/components/google-map/GoogleMap.jsx
