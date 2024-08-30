@@ -25,15 +25,26 @@ export default function Create() {
 
     const createHandler = async (values) => {
         const parsedPrice = parseFloat(values.price);
+    
         try {
-            const response = await createCampground({ ...values, price: parsedPrice });
-            if (response && response._id) {
-                navigate(`/camps/${response._id}`);
+            const response = await fetch(
+                `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(values.location)}&key=`
+            );
+            const data = await response.json();
+            if (data.results.length > 0) {
+                const { lat, lng } = data.results[0].geometry.location;
+                const campData = { ...values, price: parsedPrice, lat, lng };
+                const createdCamp = await createCampground(campData);
+                if (createdCamp && createdCamp._id) {
+                    navigate(`/camps/${createdCamp._id}`);
+                } else {
+                    console.error('Failed to create camp.');
+                }
             } else {
-                console.error('Failed to create camp.');
+                console.error('No results found for the provided location.');
             }
         } catch (error) {
-            console.error('Submission error:', error);
+            console.error('Error creating camp:', error);
         }
     };
 
