@@ -11,6 +11,9 @@ import { useGetOneCamps } from '../../hooks/useCamps'
 import { useAuthContext } from '../../contexts/AuthContext'
 import { useCreateLikes } from '../../hooks/useLikes';
 import GoogleMap from '../google-map/GoogleMap';
+import { APIProvider } from '@vis.gl/react-google-maps';
+
+const mapsApiKey = import.meta.env.VITE_API_KEY;
 
 
 export default function Details() {
@@ -42,6 +45,7 @@ export default function Details() {
 		}
 	}
 	return (
+		<APIProvider apiKey={mapsApiKey}>
 		<div className="my-48 mx-48">
 			<div
 				aria-hidden="true"
@@ -141,5 +145,6 @@ export default function Details() {
 				/>
 			</div>
 		</div>
+		</APIProvider>
 	)
 }
