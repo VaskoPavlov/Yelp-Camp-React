@@ -3,7 +3,11 @@ import { useCreateCamp } from "../../hooks/useCamps";
 import { useForm } from "../../hooks/useForm";
 import { useState, useEffect } from "react";
 
+const mapsApiKey = import.meta.env.VITE_API_KEY;
+
+
 const initialValues = { name: '', imageUrl: '', description: '', price: '', location: '' };
+
 
 export default function Create() {
     const navigate = useNavigate();
@@ -28,7 +32,7 @@ export default function Create() {
     
         try {
             const response = await fetch(
-                `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(values.location)}&key=`
+                `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(values.location)}&key=${mapsApiKey}`
             );
             const data = await response.json();
             if (data.results.length > 0) {
