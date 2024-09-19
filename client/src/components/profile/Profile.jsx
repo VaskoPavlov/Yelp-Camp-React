@@ -22,8 +22,9 @@ export default function Profile() {
                     className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ae754e] to-[#bcf7d1] opacity-70 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
                 />
             </div>
-            <h3 className="text-xl text-center my-10">
-                <span className={styles.textImage}>{email}:</span> <span className=" font-bold tracking-tight sm:text-3xl text-center my-10">campgrounds</span>
+            <h3 className="text-xl mt-28 mb-20 text-center">
+                <span className={styles.textImage}>{email}</span>
+                <span className="font-bold tracking-tight sm:text-3xl text-center my-10"> campgrounds:</span>
             </h3>
 
             {userCamps.length > 0

@@ -1,13 +1,13 @@
 .textImage {
     display: inline;
-    font-weight: 800;
+    font-weight: 700;
     font-size:xx-large;
     text-indent: 0; /* Reset text-indent */
-    padding: 2px 8px; /* Adjust padding as needed */
+    text-shadow: 2px black;
     position: relative; 
     
     /* Text background */
-    background: url('../../public/images/TreeBark.png') center;
+    background: url('../../public/images/TreeBark.png') repeat;
     background-size: 100px;
     background-clip: text; 
     -webkit-text-fill-color: transparent;

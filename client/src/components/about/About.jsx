@@ -18,18 +18,22 @@ export default function About() {
             <div className="flex items-center justify-center min-h-screen my-26">
                 <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
                     <div className="mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
-                        <div className="sm:max-w-lg">
-                            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                        <div className="">
+                            <h1 className="text-4xl text-center font-bold tracking-tight text-gray-900 sm:text-6xl">
                                 Yelp Camp
                             </h1>
-                            <p className="mt-4 text-xl text-gray-500">
-                                Share your experince and be part of our nature loving community. Every feedback on a campground makes the community more reliable and welcoming.
+                            <p className="mt-8 text-xl font-bold text-gray-600">
+                                Share your experince and be part of our nature loving community. 
+                                <br /> 
+                                Every feedback on a campground makes the community more reliable and welcoming.
+                                <br />
+                                Enjoy the nature, relax, make yourself comfortable and recharge your batteries!
                             </p>
-                            <p className="mt-4 text-xl text-gray-500">
+                            <p className="mt-8 text-xl text-gray-500">
                                 <strong>(NEW TO CAMPING:)</strong><br />
                                 <em className="underline"> Keep in mind that the amentities here are not to the standards of the convetional houses or hotels.</em>
                             </p>
-                            <p className="mt-4 text-xl text-gray-500">
+                            <p className="mt-8 text-xl text-gray-500">
                                 Contact Support: support@yelpcamp.com 
                             </p>
                         </div>
