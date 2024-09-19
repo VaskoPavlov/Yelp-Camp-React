@@ -1,0 +1,15 @@
+.textImage {
+    display: inline;
+    font-weight: 800;
+    font-size:xx-large;
+    text-indent: 0; /* Reset text-indent */
+    padding: 2px 8px; /* Adjust padding as needed */
+    position: relative; 
+    
+    /* Text background */
+    background: url('../../public/images/TreeBark.png') center;
+    background-size: 100px;
+    background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    text-decoration-color: transparent;
+  }
