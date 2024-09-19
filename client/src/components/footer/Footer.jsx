@@ -4,8 +4,8 @@ import YelpCamp from '../../public/images/YelpCampLogo.png'
 
 export default function Footer() {
     return (
-        <footer className="text-center mb-24">
-            <div className="py-6 mx-auto rounded-3xl bg-gradient-to-b from-[#dde0ce] to-transparent opacity-90 sm:w-full md:w-2/3 lg:w-4/5">
+        <footer className="text-center mb-0">
+            <div className="py-6 mx-auto rounded-3xl bg-gradient-to-b from-[#dde0ce] to-transparent opacity-90 lg:w-4/6">
                 <div className="flex md:flex-row items-center justify-between mx-8">
                     <Link to="/" className="">
                         <span className="sr-only">Yelp Camp</span>
