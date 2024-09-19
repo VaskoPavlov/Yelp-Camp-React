@@ -78,7 +78,7 @@ export default function Header() {
 			</nav>
 			<Dialog open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} className="lg:hidden">
 				<div className="fixed inset-0 z-10" />
-				<DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+				<DialogPanel className="fixed inset-y-0 right-0 z-10 w-1/4 overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
 					<div className="flex items-center justify-between">
 						<Link to="/" className="-m-1.5 p-1.5">
 							<span className="sr-only">Yelp Camp</span>
@@ -112,24 +112,36 @@ export default function Header() {
 								</Link>
 							</div>
 							<div className="py-6">
-								<Link
-									to="/logout"
-									className="-mx-3 text-lg block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
-								>
-									Logout
+							{isAuthenticated
+								? ( 
+								<div>
+									<Link
+										to="/logout"
+										className="-mx-3 text-lg block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
+									>
+										Logout
+									</Link>
+									<Link to="/profile" className="-mx-3 px-3 py-1 text-lg underline decoration-wavy font-bold leading-6 text-gray-900">
+										{email}
+									</Link>
+								</div>
+								)
+								: ( 
+								<div>
+									<Link
+										to="/login"
+										className="-mx-3 text-lg block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
+									>
+										Login
+									</Link>
+									<Link
+										to="/register"
+										className="-mx-3 text-lg block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
+									>
+										Register
 								</Link>
-								<Link
-									to="/login"
-									className="-mx-3 text-lg block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
-								>
-									Login
-								</Link>
-								<Link
-									to="/register"
-									className="-mx-3 text-lg block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
-								>
-									Register
-								</Link>
+								</div>
+								)}
 							</div>
 						</div>
 					</div>
