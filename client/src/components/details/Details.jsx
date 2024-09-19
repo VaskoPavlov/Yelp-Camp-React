@@ -71,23 +71,23 @@ export default function Details() {
 							/>
 						</div>
 						<div className="mx-auto">
-							<div className="">
+							<div className="mt-4">
 								<h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">{camp.name}</h1>
 							</div>
 
-							<div className="mt-2">
-								<p className="text-lg text-gray-900">Price: ${camp.price}/day</p>
+							<div className="mt-4">
+								<p className="text-xl font-bold text-gray-900">Price: ${camp.price}/day</p>
 							</div>
 
-							<div className="mt-2">
+							<div className="mt-4">
 								<p className="text-lg rounded-lg shadow-lg border p-2">{camp.description}</p>
 
 							</div>
-							<div className="mt-2">
-								<p className="text-lg font-medium text-gray-900">{camp.location}</p>
+							<div className="mt-4">
+								<p className="text-lg font-bold text-gray-900">{camp.location}</p>
 
 							</div>
-							<div className="mt-2">
+							<div className="mt-4">
 								<div className="flex">
 									<div className="flex ">
 										{isAuthenticated 
@@ -108,17 +108,19 @@ export default function Details() {
 									</div>
 								</div>
 							</div>
+							<div className="mt-0">
+								<span>{likeCount} {likeCount === 1 ? 'Like' : 'Likes'}</span>
+							</div>
 							{isOwner && (
-								<div className="mt-2">
-									<Link to={`/camps/${campId}/edit`} onClick={campEditHandler} className="border bg-yellow-200 text-black rounded px-2 py-1 mr-10">
+								<div className="mt-10">
+									<Link to={`/camps/${campId}/edit`} onClick={campEditHandler} className="border bg-orange-500 text-white text-xl font-bold rounded px-2 py-1 mr-4">
 										Edit
 									</Link>
-									<Link onClick={campDeleteHandler} className="border bg-red-900 text-white rounded px-2 py-1">
+									<Link onClick={campDeleteHandler} className="border bg-red-700 text-white text-xl font-bold rounded px-2 py-1">
 										Delete
 									</Link>
 								</div>
 							)}
-							<span>{likeCount} {likeCount === 1 ? 'Like' : 'Likes'}</span>
 						</div>
 					</div>
 				</div>
