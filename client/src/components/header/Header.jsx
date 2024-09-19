@@ -97,21 +97,6 @@ export default function Header() {
 						<div className="-my-6 divide-y divide-gray-500/10">
 							<div className="space-y-2 py-6 menu">
 								<Disclosure as="div" className="-mx-3">
-									{/* <DisclosureButton className="text-lg group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-bold leading-7 hover:bg-gray-50">
-										<span className={styles.textAndBorderImage}>Seasons</span>
-										<ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none group-data-[open]:rotate-180" />
-									</DisclosureButton> */}
-									{/* <DisclosurePanel className="mt-2 space-y-2">
-										{seasons.map((item) => (
-											<Link
-												key={item.name}
-												to={item.to}
-												className="block rounded-lg py-2 pl-6 pr-3 text-lg font-bold leading-7 text-gray-900 hover:bg-gray-50"
-											>
-												{item.name}
-											</Link>
-										))}
-									</DisclosurePanel> */}
 								</Disclosure>
 								<Link
 									to="/camps"
