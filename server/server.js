@@ -1398,6 +1398,12 @@
                 "_createdOn": 1723039417266,
                 "_id": "b985cec7-2886-413b-80c7-509f992bef54"
             }
+        },
+        comments: {
+            userId: '02b',
+            email: 'Lily',
+            text: 'I think you have a point🤔',
+            replies: []
         }
     };
     var rules$1 = {
