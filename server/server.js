@@ -1400,10 +1400,41 @@
             }
         },
         comments: {
-            userId: '02b',
-            email: 'Lily',
-            text: 'I think you have a point🤔',
-            replies: []
+            "7903fbd7-3f90-4181-b5f7-3b4a9f54850c":{
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "campId": "f033588c-7198-40a9-8c3d-f624186c7e3d",
+                "text": "kjbkjbjjkbj",
+                "_createdOn": 1727272173512,
+                "_id": "7903fbd7-3f90-4181-b5f7-3b4a9f54850c"
+            },
+            "7903fbd7-3f90-4181-b5f7-3b4a9f54850c":{
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "campId": "f033588c-7198-40a9-8c3d-f624186c7e3d",
+                "text": "lnsadlksadkldsans",
+                "_createdOn": 1727295301635,
+                "_id": "9850b8d3-0b77-41d3-b1ff-94e673fe2510"
+            },
+            "7903fbd7-3f90-4181-b5f7-3b4a9f54850c":{
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "campId": "1273da79-4996-40c9-975f-51e1a666a682",
+                "text": "dasdsadasdsa",
+                "_createdOn": 1727296405455,
+                "_id": "7eb9fef4-2dc9-4cd1-8d56-8bf74bb7d7ff"
+            },
+            "7903fbd7-3f90-4181-b5f7-3b4a9f54850c":{
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "campId": "1273da79-4996-40c9-975f-51e1a666a682",
+                "text": "adssdaadssad",
+                "_createdOn": 1727296477129,
+                "_id": "6f78c0a3-4252-418b-9623-6bcaf6bd59d0"
+            },
+            "7903fbd7-3f90-4181-b5f7-3b4a9f54850c":{
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "campId": "b985cec7-2886-413b-80c7-509f992bef54",
+                "text": "asddsadsadsa",
+                "_createdOn": 1727296495855,
+                "_id": "b5f6bc90-8152-4126-8834-849b29052106"
+            }
         }
     };
     var rules$1 = {

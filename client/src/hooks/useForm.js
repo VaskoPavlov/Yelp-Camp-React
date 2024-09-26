@@ -27,6 +27,7 @@ export function useForm(initialValues, submitCallback, validate) {
 
     const submitHandler = async (e) => {
         e.preventDefault();
+
         setIsSubmitting(true);
         if (validateForm()) {
             try {
@@ -36,6 +37,8 @@ export function useForm(initialValues, submitCallback, validate) {
             }
         }
         setIsSubmitting(false);
+
+        setValues(initialValues);
     };
 
     return {
