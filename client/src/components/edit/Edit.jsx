@@ -1,7 +1,7 @@
+// Edit.jsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import campsAPI, { updateCamp } from '../../api/camps-api';
-import { useGetOneCamps } from '../../hooks/useCamps';
+import campsAPI from '../../api/camps-api';
 import { useForm } from '../../hooks/useForm';
 
 const initialValues = { name: '', imageUrl: '', description: '', price: '', location: '' };
@@ -9,80 +9,90 @@ const initialValues = { name: '', imageUrl: '', description: '', price: '', loca
 export default function Edit() {
     const navigate = useNavigate();
     const { campId } = useParams();
-    const [camp, setCamp] = useGetOneCamps(campId);
-    const [errors, setErrors] = useState(null);
+    const [camp, setCamp] = useState(initialValues);
 
-    const {
-        changeHandler,
-        submitHandler,
-        values,
-    } = useForm(Object.assign(initialValues, camp), async (values) => {
-        const parsedPrice = parseFloat(values.price);
-        if (isNaN(parsedPrice) || parsedPrice < 1) {
-            setErrors('Price must be a valid number greater than 0');
-            return;
+    useEffect(() => {
+        async function fetchCamp() {
+            const fetchedCamp = await campsAPI.getById(campId);
+            setCamp(fetchedCamp);
         }
-        await campsAPI.updateCamp(campId, values);
-        navigate(`/camps/${campId}`);
-    });
+        fetchCamp();
+    }, [campId]);
+
+    const validate = (values) => {
+        const errors = {};
+        if (!values.name.trim()) errors.name = 'Title is required';
+        if (!values.imageUrl.trim()) errors.imageUrl = 'Image URL is required';
+        if (!values.description.trim()) errors.description = 'Description is required';
+        if (!values.location.trim()) errors.location = 'Location is required';
+
+        const parsedPrice = parseFloat(values.price);
+        if (!values.price.trim()) errors.price = 'Price is required';
+        else if (isNaN(parsedPrice) || parsedPrice <= 0) errors.price = 'Price must be a valid number greater than 0';
+
+        return errors;
+    };
+
+    const updateHandler = async (values) => {
+        const parsedPrice = parseFloat(values.price);
+
+        try {
+            const updatedCamp = { ...values, price: parsedPrice };
+            await campsAPI.updateCamp(campId, updatedCamp);
+            navigate(`/camps/${campId}`);
+        } catch (error) {
+            console.error('Failed to update camp:', error);
+        }
+    };
+
+    const { values, errors, changeHandler, submitHandler } = useForm(camp, updateHandler, validate);
 
     return (
         <div className="m-20">
-            <div
-                aria-hidden="true"
-                className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-            >
-                <div
-                    style={{
-                        clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-                    }}
-                    className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ae754e] to-[#bcf7d1] opacity-70 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-                />
-            </div>
             <div className="my-48 mx-auto bg-white rounded-lg shadow-lg border overflow-hidden max-w-sm lg:max-w-md w-full p-12">
                 <form onSubmit={submitHandler}>
                     <h2 className="text-lg font-bold leading-7 text-center text-gray-900">Edit</h2>
                     <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                        {errors && <div className="col-span-full text-red-500">{errors}</div>}
+                        
+                        {/* Title Field */}
                         <div className="col-span-full">
                             <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
                                 Title
                             </label>
                             <div className="mt-2">
-                                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                    <input
-                                        id="name"
-                                        name="name"
-                                        type="text"
-                                        value={values.name}
-                                        onChange={changeHandler}
-                                        required
-                                        placeholder="Campground name"
-                                        autoComplete="name"
-                                        className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                    />
-                                </div>
+                                <input
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    value={values.name}
+                                    onChange={changeHandler}
+                                    placeholder="Campground name"
+                                    className="block w-full rounded-md border-gray-300"
+                                />
+                                {errors.name && <div className="text-red-500 text-sm mt-1">{errors.name}</div>}
                             </div>
                         </div>
+
+                        {/* Image URL Field */}
                         <div className="col-span-full">
                             <label htmlFor="imageUrl" className="block text-sm font-medium leading-6 text-gray-900">
                                 Image
                             </label>
                             <div className="mt-2">
-                                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                    <input
-                                        id="imageUrl"
-                                        name="imageUrl"
-                                        type="url"
-                                        value={values.imageUrl}
-                                        onChange={changeHandler}
-                                        placeholder="Image Url"
-                                        autoComplete="imageUrl"
-                                        className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                    />
-                                </div>
+                                <input
+                                    id="imageUrl"
+                                    name="imageUrl"
+                                    type="url"
+                                    value={values.imageUrl}
+                                    onChange={changeHandler}
+                                    placeholder="Image URL"
+                                    className="block w-full rounded-md border-gray-300"
+                                />
+                                {errors.imageUrl && <div className="text-red-500 text-sm mt-1">{errors.imageUrl}</div>}
                             </div>
                         </div>
+
+                        {/* Description Field */}
                         <div className="col-span-full">
                             <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900">
                                 Description
@@ -93,54 +103,54 @@ export default function Edit() {
                                     name="description"
                                     value={values.description}
                                     onChange={changeHandler}
-                                    required
+                                    placeholder="Campground description"
                                     rows={3}
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md border-gray-300"
                                 />
+                                {errors.description && <div className="text-red-500 text-sm mt-1">{errors.description}</div>}
                             </div>
                         </div>
+
+                        {/* Price Field */}
                         <div className="col-span-full">
                             <label htmlFor="price" className="block text-sm font-medium leading-6 text-gray-900">
                                 Price
                             </label>
-                            <div className="mt-2">
-                                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                    <span className="p-2">$</span>
-                                    <input
-                                        id="price"
-                                        name="price"
-                                        type="number"
-                                        value={values.price}
-                                        onChange={changeHandler}
-                                        required
-                                        placeholder="$$$"
-                                        autoComplete="price"
-                                        className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                    />
-                                </div>
-                                <span><em>Other currency: convert it to USD</em></span>
+                            <div className="mt-2 flex rounded-md">
+                                <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">$</span>
+                                <input
+                                    id="price"
+                                    name="price"
+                                    type="number"
+                                    value={values.price}
+                                    onChange={changeHandler}
+                                    placeholder="Price"
+                                    className="block w-full flex-1 rounded-none rounded-r-md border-gray-300"
+                                />
                             </div>
+                            {errors.price && <div className="text-red-500 text-sm mt-1">{errors.price}</div>}
                         </div>
+
+                        {/* Location Field */}
                         <div className="col-span-full">
                             <label htmlFor="location" className="block text-sm font-medium leading-6 text-gray-900">
                                 Location
                             </label>
                             <div className="mt-2">
-                                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                                    <input
-                                        id="location"
-                                        name="location"
-                                        type="text"
-                                        value={values.location}
-                                        onChange={changeHandler}
-                                        required
-                                        placeholder="Campground location"
-                                        autoComplete="location"
-                                        className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                    />
-                                </div>
+                                <input
+                                    id="location"
+                                    name="location"
+                                    type="text"
+                                    value={values.location}
+                                    onChange={changeHandler}
+                                    placeholder="Location"
+                                    className="block w-full rounded-md border-gray-300"
+                                />
+                                {errors.location && <div className="text-red-500 text-sm mt-1">{errors.location}</div>}
                             </div>
                         </div>
+
+                        {/* Submit Button */}
                         <div className="col-span-full">
                             <button
                                 type="submit"
