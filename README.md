@@ -111,15 +111,3 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-Feel free to modify or extend this project to your needs! Happy coding!
-```
-
-### Key Highlights:
-- **Clear description of the project purpose**: Mentioning that it’s a Yelp-like platform for campsites.
-- **Tech stack section**: Explains the tools and technologies used like Vite, React, and JavaScript.
-- **Best practices**: Highlighting the use of hooks, `AuthContext`, persisted state, clean components, etc.
-- **Instructions**: Clear steps to install, run, and develop the project.
-- **Structure**: Directory structure included for clarity.
