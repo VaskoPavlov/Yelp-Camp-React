@@ -28,7 +28,7 @@ export default function Catalog() {
                     <h2 className="text-2xl font-bold tracking-tight text-center text-gray-900">Campgrounds</h2>
 
                     {camps.length > 0 
-                        ? <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                        ? <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                             {camps.map(c => <CampListItem key={c._id} {...c} />)}
                         </div>
                         : <h1 className="mt-48 text-2xl font-bold text-center text-gray-900">No campgrounds yet</h1>}
