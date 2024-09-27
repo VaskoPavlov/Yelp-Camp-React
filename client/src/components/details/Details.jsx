@@ -156,7 +156,7 @@ export default function Details() {
 						description={camp.description}
 					/>
 				</div>
-				<div className="my-10 mx-auto w-full">
+				<div className="my-10 mx-auto w-3/4">
 					<h2 className="font-bold text-lg text-center">Comments:</h2>
 					<ul>
 						{comments.map((comment, index) => (
@@ -179,7 +179,7 @@ export default function Details() {
 					</ul>
 
 				</div>
-				{isAuthenticated && (<article className="mb-10 mx-auto w-full font-bold text-lg">
+				{isAuthenticated && (<article className="mb-10 mx-auto w-3/4 font-bold text-lg">
 					<form onSubmit={submitHandler}>
 						<div className={styles.commentDiv}>
 							<textarea
