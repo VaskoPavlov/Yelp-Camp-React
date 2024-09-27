@@ -45,7 +45,7 @@ Yelp Camp is a full-featured campsite review platform, inspired by Yelp, designe
    - Custom hooks are implemented to handle complex logic (e.g., form management with validation).
 
 ### 2. **AuthContext**
-   - User authentication is handled using React's context API. `AuthContext` provides a centralized store for authentication state (user login, logout, session persistence).
+   - User authentication is handled using React's context API. `AuthContext` provides a centralized store for the authentication state (user login, logout, session persistence).
    - This ensures that user sessions are remembered across page reloads, thanks to `localStorage`.
 
 ### 3. **Persisted State**
@@ -69,7 +69,7 @@ Yelp Camp is a full-featured campsite review platform, inspired by Yelp, designe
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/yelp-camp-react.git
+   git clone https://github.com/VaskoPavlov/Yelp-Camp-React.git
    cd yelp-camp-react
    ```
 
@@ -97,13 +97,10 @@ Yelp Camp is a full-featured campsite review platform, inspired by Yelp, designe
    http://localhost:3000
    ```
 
-## Available Scripts
+## RUN Script
 
 - **`npm run dev`**: Start the development server.
-- **`npm run build`**: Build the project for production.
-- **`npm run serve`**: Preview the production build locally.
-- **`npm run lint`**: Run ESLint to find and fix code issues.
-
+  
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any feature requests or bug fixes.
