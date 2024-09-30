@@ -94,7 +94,7 @@ Yelp Camp is a full-featured campsite review platform, inspired by Yelp, designe
 
 5. Open your browser and navigate to:
    ```
-   http://localhost:3000
+   http://localhost:3030
    ```
 
 ## RUN Script
