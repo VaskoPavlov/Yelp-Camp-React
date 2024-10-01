@@ -10,7 +10,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useGetOneCamps } from '../../hooks/useCamps'
 import { useAuthContext } from '../../contexts/AuthContext'
 import { useCreateLikes } from '../../hooks/useLikes';
-import GoogleMap from '../google-map/GoogleMap';
+// import GoogleMap from '../google-map/GoogleMap';
+import { GoogleMap } from '@vis.gl/react-google-maps';
 import { APIProvider } from '@vis.gl/react-google-maps';
 import commentsAPI from '../../api/comments-api';
 import { useForm } from '../../hooks/useForm';
