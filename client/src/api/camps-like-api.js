@@ -1,6 +1,6 @@
 import * as request from './requester.js';
 
-const BASE_URL = 'http://localhost:3030/data/likes';
+const BASE_URL = `${import.meta.VITE_API_URL}/data/likes`;
 
 const create = (campId) => request.post(BASE_URL, {campId});
 
