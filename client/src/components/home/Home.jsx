@@ -6,17 +6,31 @@ import { useEffect, useState } from 'react';
 import campsAPI from '../../api/camps-api';
 import CampListItem from '../catalog/CampListItem';
 import { useLatestCamps } from '../../hooks/useCamps';
+import { db } from '../../../../firebase.config';
+import { getDatabase } from 'firebase/database';
+import { ref, onValue, limitToLast } from "firebase/database";
 
 export default function Home() {
-	const [latestCamps, setLatestCamps] = useState([]);
-	useEffect(() => {
-		(async () => {
-			const result = await campsAPI.getAll();
-			// const latestData = result.length % 3 === 0 ? result.reverse().slice(3) : result.reverse().slice(2)
-			setLatestCamps(result.reverse().slice(0,3));
-		})([]);
-	})
+	// const [latestCamps, setLatestCamps] = useState([]);
+	// useEffect(() => {
+	// 	(async () => {
+	// 		const result = await campsAPI.getAll();
+	// 		// const latestData = result.length % 3 === 0 ? result.reverse().slice(3) : result.reverse().slice(2)
+	// 		setLatestCamps(result.reverse().slice(0,3));
+	// 	})([]);
+	// })
 	// const latestCamps = useLatestCamps();
+
+	const [camps, setCamps] = useState(null);
+
+	useEffect(() => {
+		const campsRef = ref(db, '/camps');
+		onValue(query(campsRef, limitToLast(3)), (snapshot) => {
+			const camps = snapshot.val();
+			setCamps(camps); // No need to reverse or slice
+		});
+	}, []);
+
 	return (
 		<div className="m-20">
 			<div
@@ -42,9 +56,9 @@ export default function Home() {
 					<div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
 						<h3 className="text-2xl font-bold tracking-tight sm:text-3xl">Newest campgrounds</h3>
 
-						{latestCamps.length > 0 
+						{camps.length > 0 
                         ? <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 lg:grid-cols-3 xl:gap-x-8">
-                            {latestCamps.map(c => <CampListItem key={c._id} {...c} />)}
+                            {camps.map(c => <CampListItem key={c._id} {...c} />)}
                         </div>
                         : <h1 className="my-36 text-2xl font-bold text-center text-gray-900">No campgrounds yet</h1>}
 						
