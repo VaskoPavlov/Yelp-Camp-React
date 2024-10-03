@@ -1,6 +1,6 @@
 import * as request from './requester';
 
-const BASE_URL = 'http://localhost:3030/data/camps'
+const BASE_URL = `${import.meta.VITE_API_URL}/data/camps`
 
 export const getAll = () => request.get(BASE_URL);
 
