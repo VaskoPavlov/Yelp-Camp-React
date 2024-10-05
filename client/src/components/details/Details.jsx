@@ -10,8 +10,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useGetOneCamps } from '../../hooks/useCamps'
 import { useAuthContext } from '../../contexts/AuthContext'
 import { useCreateLikes } from '../../hooks/useLikes';
-// import GoogleMap from '../google-map/GoogleMap';
-import { GoogleMap } from '@vis.gl/react-google-maps';
+import GoogleMapComponent from '../google-map/GoogleMap';
 import { APIProvider } from '@vis.gl/react-google-maps';
 import commentsAPI from '../../api/comments-api';
 import { useForm } from '../../hooks/useForm';
@@ -27,7 +26,7 @@ const initialValues = { comment: '' };
 export default function Details() {
 	const navigate = useNavigate();
 	const { isAuthenticated } = useAuthContext();
-	const { userId } = useAuthContext();
+	const { userId, email } = useAuthContext();
 	const { campId } = useParams();
 	const [camp] = useGetOneCamps(campId);
 	const [comments, setComments] = useGetAllComments(campId);
@@ -69,7 +68,7 @@ export default function Details() {
 	}
 	return (
 		<APIProvider apiKey={mapsApiKey}>
-			<div className="my-48 mx-48">
+			<div className="my-48 mx-0">
 				<div
 					aria-hidden="true"
 					className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -149,7 +148,7 @@ export default function Details() {
 					</div>
 				</div>
 				<div className="my-10 mx-auto w-5/6">
-					<GoogleMap
+					<GoogleMapComponent
 						lat={camp.lat}
 						lng={camp.lng}
 						name={camp.name}
@@ -168,7 +167,7 @@ export default function Details() {
 											{comment.author.email}
 										</span>
 									) : (
-										<span className="font-black">Unknown User</span>
+										<span className="font-black">{email}</span>
 									)}
 									<br />
 									<span className="pl-32 text-white [text-shadow:_5px_0_10px_rgb(0_0_0_/_100%)] text-md">
