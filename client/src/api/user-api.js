@@ -3,7 +3,7 @@
 
 import * as request from './requester.js'
 
-const BASE_URL = `${import.meta.VITE_API_URL}/users`
+const BASE_URL = `${import.meta.env.VITE_API_URL}/users`
 
 
 const login = (email, password) => request.post(`${BASE_URL}/login`, {email, password})
