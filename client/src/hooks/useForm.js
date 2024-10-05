@@ -41,11 +41,16 @@ export function useForm(initialValues, submitCallback, validate) {
         setValues(initialValues);
     };
 
+    const resetForm = (newValues) => {
+        setValues(newValues);
+    };
+
     return {
         values,
         errors,
         changeHandler,
         submitHandler,
         isSubmitting,
+        resetForm,
     };
 }
