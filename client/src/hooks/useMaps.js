@@ -65,37 +65,3 @@ export const initializeMap = async (coordinates, location) => {
         console.error('Invalid coordinates:', coordinates);
     }
 };
-
-// More advanced version that is not working
-
-// Function to initialize the Google Map
-// export const initializeMap = async (coordinates, location) => {
-//     if (coordinates.lat && coordinates.lng) {
-//         // Import the required elements from the maps library
-//         const { AdvancedMarkerElement, PinElement } = await window.google.maps.importLibrary('marker');
-
-//         // Initialize the map
-//         const map = new window.google.maps.Map(document.getElementById('map'), {
-//             zoom: 12,
-//             center: coordinates,
-//             scrollwheel: false,
-//         });
-
-//         // Create a custom pin element if necessary
-//         const pinElement = new PinElement({
-//             background: '#ff0000', // Custom styling for the pin (red color)
-//             scale: 1.5, // Adjust the size
-//         });
-
-//         // Create and place the advanced marker
-//         new AdvancedMarkerElement({
-//             position: coordinates,
-//             map: map,
-//             title: location,
-//             mapId: 'Vasko',
-//             content: pinElement,
-//         });
-//     } else {
-//         console.error('Invalid coordinates:', coordinates);
-//     }
-// };
