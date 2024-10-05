@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import campsAPI from '../../api/camps-api';
-import { useForm } from '../../hooks/useForm';
+import { useForm, resetForm} from '../../hooks/useForm';
 
 const initialValues = { name: '', imageUrl: '', description: '', price: '', location: '' };
 
@@ -15,6 +15,7 @@ export default function Edit() {
         async function fetchCamp() {
             const fetchedCamp = await campsAPI.getById(campId);
             setCamp(fetchedCamp);
+            resetForm(fetchedCamp);  // <-- Add this to reset the form with fetched data
         }
         fetchCamp();
     }, [campId]);
@@ -27,7 +28,7 @@ export default function Edit() {
         if (!values.location.trim()) errors.location = 'Location is required';
 
         const parsedPrice = parseFloat(values.price);
-        if (!values.price.trim()) errors.price = 'Price is required';
+        if (!values.price) errors.price = 'Price is required';
         else if (isNaN(parsedPrice) || parsedPrice <= 0) errors.price = 'Price must be a valid number greater than 0';
 
         return errors;
@@ -45,7 +46,7 @@ export default function Edit() {
         }
     };
 
-    const { values, errors, changeHandler, submitHandler } = useForm(camp, updateHandler, validate);
+    const { values, errors, changeHandler, submitHandler, resetForm } = useForm(camp, updateHandler, validate);
 
     return (
         <div className="m-20">
