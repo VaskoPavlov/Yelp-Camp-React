@@ -26,7 +26,7 @@ export default function Login() {
         submitHandler 
     } = useForm(initialValues, loginHandler);
     return (
-        <div className="m-20">
+        <div className="m-20 mx-0">
             <div
                 aria-hidden="true"
                 className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -39,8 +39,8 @@ export default function Login() {
                     className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ae754e] to-[#bcf7d1] opacity-70 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
                 />
             </div>
-            <div className="my-auto mx-auto flex items-center justify-center h-screen w-full px-5 sm:px-0">
-                <div className="flex bg-white rounded-lg shadow-lg border overflow-hidden max-w-sm lg:max-w-md w-full">
+            <div className="my-auto mx-0 flex items-center justify-center h-screen w-full px-5 sm:px-0 ">
+                <div className="flex bg-white rounded-lg shadow-lg border overflow-hidden lg:max-w-md max-w-sm w-full">
                     <div className="w-full p-8 lg:w-full">
                         <form onSubmit={submitHandler}>
                             <p className="text-xl text-gray-600 font-bold text-center">Login</p>
