@@ -1,4 +1,5 @@
 const server = require('./server');
+const cors = require('cors')({ origin: true }); // Enable CORS for all origins
 
 const {onRequest} = require("firebase-functions/v2/https");
 const {setGlobalOptions} = require("firebase-functions/v2");
