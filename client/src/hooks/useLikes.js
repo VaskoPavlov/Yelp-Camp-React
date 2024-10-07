@@ -8,11 +8,9 @@ export function useCreateLikes(campId, userId) {
     useEffect(() => {
         async function fetchLikes() {
             try {
-                // Fetch the likes for the camp
                 const likesData = await likesAPI.getAll(campId);
                 setLikes(likesData);
 
-                // Check if the user has already liked the camp
                 const userHasLiked = likesData.some(like => like._ownerId === userId);
                 setHasLiked(userHasLiked);
             } catch (error) {
