@@ -1,8 +1,8 @@
+'use client'
 import { Link, useNavigate } from "react-router-dom";
 import { useRegister } from "../../hooks/useAuth";
 import { useState } from "react";
 import { useForm } from "../../hooks/useForm";
-import authAPI from "../../api/user-api";
 
 const initialValues = { email: '', password: '', rePass: "" };
 
