@@ -1,6 +1,6 @@
 .commentDiv {
     display: flex;
-    justify-content:start;  /* Centers the section horizontally */
+    justify-content:start;
     align-items: center;
 }
 
@@ -21,20 +21,18 @@
     text-indent: 0;
 }
 
-/* Textarea styling */
 textarea {
     border: 3px solid rgb(154, 168, 113);
-    width: 100%;              /* Make the textarea take full width */
+    width: 100%; 
     margin: 0 auto; 
-    text-align: left;          /* Ensure the text aligns to the left inside the textarea */
-    padding: 10px;             /* Add some padding for a better look */
+    text-align: left;
+    padding: 10px; 
     box-sizing: border-box; 
-    border-radius: 5px;    /* Ensure padding and borders are included in the width */
+    border-radius: 5px;
 }
 
-/* Additional styling (optional) */
 textarea:focus {
     outline: none;
-    border: 3px solid rgb(163, 137, 76); /* Add a border on focus for better user experience */
-    border-radius: 5px;        /* Optional: Rounded corners */
+    border: 3px solid rgb(163, 137, 76);
+    border-radius: 5px;
 }
