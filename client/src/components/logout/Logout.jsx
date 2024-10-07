@@ -1,3 +1,4 @@
+'use client'
 import { Navigate } from "react-router-dom";
 import { useLogout } from "../../hooks/useAuth";
 
