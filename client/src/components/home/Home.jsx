@@ -5,31 +5,15 @@ import { useEffect, useState } from 'react';
 
 import campsAPI from '../../api/camps-api';
 import CampListItem from '../catalog/CampListItem';
-import { useLatestCamps } from '../../hooks/useCamps';
-// import { useLatestCamps } from '../../hooks/useCamps';
-// import { db } from '../../../../firebase.config';
-// import { ref, onValue, limitToLast } from "firebase/database";
 
 export default function Home() {
 	const [latestCamps, setLatestCamps] = useState([]);
 	useEffect(() => {
 		(async () => {
 			const result = await campsAPI.getAll();
-			// const latestData = result.length % 3 === 0 ? result.reverse().slice(3) : result.reverse().slice(2)
 			setLatestCamps(result.reverse().slice(0,3));
 		})([]);
-	}, [])
-	// const latestCamps = useLatestCamps();
-
-	// const [camps, setCamps] = useState(null);
-
-	// useEffect(() => {
-	// 	const campsRef = ref(db, '/camps');
-	// 	onValue(query(campsRef, limitToLast(3)), (snapshot) => {
-	// 		const camps = snapshot.val();
-	// 		setCamps(camps); // No need to reverse or slice
-	// 	});
-	// }, []);
+	}, []);
 
 	return (
 		<div className="m-20 mx-0">
@@ -72,7 +56,6 @@ export default function Home() {
 							</div>
 						</div>
 					</div>
-					{/*  */}
 			</div>
 			<div
 				aria-hidden="true"
