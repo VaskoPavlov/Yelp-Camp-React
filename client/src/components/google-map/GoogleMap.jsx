@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect } from 'react';
-import { useCoordinates, loadGoogleMapsScript, initializeMap } from '../../hooks/useMaps'; // Import the custom hook and functions
+import { useCoordinates, loadGoogleMapsScript, initializeMap } from '../../hooks/useMaps';
 
 const GoogleMapComponent = ({ location }) => {
     const coordinates = useCoordinates(location);
