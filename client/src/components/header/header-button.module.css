@@ -1,19 +1,17 @@
 .textAndBorderImage {
   display: inline-block;
   font-weight: 800;
-  text-indent: 0; /* Reset text-indent */
-  padding: 2px 8px; /* Adjust padding as needed */
+  text-indent: 0;
+  padding: 2px 8px; 
   border-bottom: 3px solid transparent;
   position: relative; 
   
-  /* Text background */
   background: url('../../public/images/TreeBark.png') no-repeat center;
   background-size: 100px;
   background-clip: text; 
   -webkit-text-fill-color: transparent;
   text-decoration-color: transparent;
   
-  /* Border background */
   border-image: url('../../public/images/TreeBark.png') 80 repeat;
   -webkit-border-image: url('../../public/images/TreeBark.png') 80 repeat;  
 }
@@ -21,11 +19,10 @@
 .textImage {
   display: inline;
   font-weight: 800;
-  text-indent: 0; /* Reset text-indent */
-  padding: 2px 8px; /* Adjust padding as needed */
+  text-indent: 0;
+  padding: 2px 8px; 
   position: relative; 
   
-  /* Text background */
   background: url('../../public/images/TreeBark.png') no-repeat center;
   background-size: 100px;
   background-clip: text; 
@@ -38,16 +35,16 @@
   display: inline-block;
   padding: 10px 20px;
   border: 0;
-  background: none; /* No background color */
+  background: none;
 }
 
 .buttonText {
   display: inline-block;
   background: url('../../public/images/TreeBark.png') no-repeat center;
   -webkit-background-clip: text;
-  background-clip: text; /* Standard property */
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration-color: transparent;
   background-size: cover;
-  text-indent: 0; /* Reset text-indent */
+  text-indent: 0;
 }
