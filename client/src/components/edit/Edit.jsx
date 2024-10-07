@@ -1,4 +1,4 @@
-// Edit.jsx
+'use client'
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import campsAPI from '../../api/camps-api';
@@ -15,7 +15,7 @@ export default function Edit() {
         async function fetchCamp() {
             const fetchedCamp = await campsAPI.getById(campId);
             setCamp(fetchedCamp);
-            resetForm(fetchedCamp);  // <-- Add this to reset the form with fetched data
+            resetForm(fetchedCamp);
         }
         fetchCamp();
     }, [campId]);
@@ -66,8 +66,6 @@ export default function Edit() {
                 <form onSubmit={submitHandler}>
                     <h2 className="text-lg font-bold leading-7 text-center text-gray-900">Edit</h2>
                     <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                        
-                        {/* Title Field */}
                         <div className="col-span-full">
                             <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
                                 Title
@@ -85,8 +83,6 @@ export default function Edit() {
                                 {errors.name && <div className="text-red-500 text-sm mt-1">{errors.name}</div>}
                             </div>
                         </div>
-
-                        {/* Image URL Field */}
                         <div className="col-span-full">
                             <label htmlFor="imageUrl" className="block text-sm font-medium leading-6 text-gray-900">
                                 Image
@@ -104,8 +100,6 @@ export default function Edit() {
                                 {errors.imageUrl && <div className="text-red-500 text-sm mt-1">{errors.imageUrl}</div>}
                             </div>
                         </div>
-
-                        {/* Description Field */}
                         <div className="col-span-full">
                             <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900">
                                 Description
@@ -123,8 +117,6 @@ export default function Edit() {
                                 {errors.description && <div className="text-red-500 text-sm mt-1">{errors.description}</div>}
                             </div>
                         </div>
-
-                        {/* Price Field */}
                         <div className="col-span-full">
                             <label htmlFor="price" className="block text-sm font-medium leading-6 text-gray-900">
                                 Price
@@ -143,8 +135,6 @@ export default function Edit() {
                             </div>
                             {errors.price && <div className="text-red-500 text-sm mt-1">{errors.price}</div>}
                         </div>
-
-                        {/* Location Field */}
                         <div className="col-span-full">
                             <label htmlFor="location" className="block text-sm font-medium leading-6 text-gray-900">
                                 Location
@@ -162,8 +152,6 @@ export default function Edit() {
                                 {errors.location && <div className="text-red-500 text-sm mt-1">{errors.location}</div>}
                             </div>
                         </div>
-
-                        {/* Submit Button */}
                         <div className="col-span-full">
                             <button
                                 type="submit"
