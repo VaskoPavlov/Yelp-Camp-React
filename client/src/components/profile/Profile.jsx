@@ -1,3 +1,4 @@
+'use client'
 import { Link } from "react-router-dom";
 import { useUserCamps } from "../../hooks/useCamps";
 import { AuthContext, useAuthContext } from "../../contexts/AuthContext";
