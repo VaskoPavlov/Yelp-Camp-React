@@ -2,11 +2,10 @@
     display: inline;
     font-weight: 700;
     font-size:xx-large;
-    text-indent: 0; /* Reset text-indent */
+    text-indent: 0;
     text-shadow: 2px black;
     position: relative; 
     
-    /* Text background */
     background: url('../../public/images/TreeBark.png') repeat;
     background-size: 100px;
     background-clip: text; 
