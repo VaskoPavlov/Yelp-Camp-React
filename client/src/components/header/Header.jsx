@@ -1,5 +1,4 @@
 'use client'
-
 import { useContext, useState } from 'react'
 import {
 	Dialog,
@@ -104,17 +103,20 @@ export default function Header() {
 								>
 									<span className={styles.textImage}>Catalog</span>
 								</Link>
+								{isAuthenticated
+									? (<Link
+										to="/create"
+										className="-mx-3 text-lg block rounded-lg px-3 py-2 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
+									>
+										<span className={styles.textImage}>Create</span>
+									</Link>)
+									: ''
+								}
 							</div>
 							<div className="py-6">
 							{isAuthenticated
 								? ( 
 								<div>
-									<Link
-										to="/create"
-										className="-mx-3 text-lg block rounded-lg px-3 py-2 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
-									>
-										<span className={styles.textImage}>Create</span>
-									</Link>
 									<Link
 										to="/logout"
 										className="-mx-3 text-lg block rounded-lg px-3 py-2.5 text-base font-bold leading-7 text-gray-900 hover:bg-gray-50"
