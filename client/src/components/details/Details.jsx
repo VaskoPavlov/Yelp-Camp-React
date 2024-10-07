@@ -83,7 +83,6 @@ export default function Details() {
 				</div>
 				<div className="mx-auto w-full">
 					<div className="pt-6">
-						{/* Image gallery */}
 						<div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
 							<div className="border bg-gray-200 aspect-h-3 aspect-w-3 overflow-hidden rounded-lg lg:block">
 								<img
@@ -160,7 +159,7 @@ export default function Details() {
 					<h2 className="font-bold text-lg text-center">Comments:</h2>
 					<ul>
 						{comments.map((comment, index) => (
-							<li key={comment._id || index} className="my-2 ">  {/* Use _id or index as fallback */}
+							<li key={comment._id || index} className="my-2 ">
 								<p className="text-white bg-cover opacity-70 bg-three-bark rounded-md px-2 py-1 font-semibold hover:opacity-90 hover:scale-105 leading-6 pl-10">
 									{comment.author && comment.author.email ? (
 										<span className="underline decoration-wavy font-black">
