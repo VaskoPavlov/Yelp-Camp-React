@@ -60,7 +60,7 @@ export function useLatestCamps() {
 
 export function useUserCamps() {
     const [userCamps, setUserCamps] = useState([]);
-    const { userId } = useAuthContext(); // Get userId from AuthContext
+    const { userId } = useAuthContext();
 
     useEffect(() => {
         const fetchUserCamps = async () => {
